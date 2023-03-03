@@ -1,8 +1,10 @@
 const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
 const colors = require('colors');
 const dotenv = require('dotenv');
 const { graphqlHTTP } = require('express-graphql');
-const schema = require('./schema/schema');
+const { typeDefs, resolvers } = require('./schema/index.js');
+// const schema = require('./schema/schema');
 const connectDB = require('./config/db');
 
 dotenv.config();
@@ -17,7 +19,7 @@ connectDB();
 app.use(
   '/graphql',
   graphqlHTTP({
-    schema,
+    { typeDefs, resolvers },
     graphiql: process.env.NODE_ENV === 'development',
   })
 );

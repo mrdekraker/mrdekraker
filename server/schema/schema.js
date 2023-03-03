@@ -5,9 +5,14 @@ const {
   GraphQLSchema,
   GraphQLList,
 } = require('graphql');
-const { users, posts, comments } = require('../sampleData');
 
-const { Chatroom, Message, User, Post } = require('../models/index.js');
+const {
+  Chatroom,
+  Message,
+  User,
+  Post,
+  Comment,
+} = require('../models/index.js');
 
 // User Type
 const UserType = new GraphQLObjectType({
@@ -31,13 +36,13 @@ const PostType = new GraphQLObjectType({
     userId: {
       type: UserType,
       resolve(parent, args) {
-        return users.find((user) => user.id === parent.userId);
+        return User.findById(parent.userId);
       },
     },
     comments: {
       type: new GraphQLList(CommentType),
       resolve(parent, args) {
-        return comments.filter((comment) => comment.postId === parent.id);
+        return Comment.filter((comment) => comment.postId === parent.id);
       },
     },
   }),
@@ -51,64 +56,129 @@ const CommentType = new GraphQLObjectType({
     postId: {
       type: PostType,
       resolve(parent, args) {
-        return posts.find((post) => post.id === parent.postId);
+        return Post.findById(parent.postId);
       },
     },
     content: { type: GraphQLString },
     userId: {
       type: UserType,
       resolve(parent, args) {
-        return users.find((user) => user.id === parent.userId);
+        return User.findById(parent.userId);
       },
     },
-    // concat first and last name
     user: {
       type: UserType,
       resolve(parent, args) {
-        users.find((user) => user.id === parent.userId);
-        // concat first and last name
-        return {
-          ...parent,
-          name: `${parent.firstName} ${parent.lastName}`,
-        };
+        return User.findById(parent.userId);
       },
     },
   }),
 });
 
+// Message Type
+const MessageType = new GraphQLObjectType({
+  name: 'Message',
+  fields: () => ({
+    id: { type: GraphQLID },
+    content: { type: GraphQLString },
+    chatroomId: {
+      type: ChatroomType,
+      resolve(parent, args) {
+        return Chatroom.findById(parent.chatroomId);
+      },
+    },
+    userId: {
+      type: UserType,
+      resolve(parent, args) {
+        return User.findById(parent.userId);
+      },
+    },
+  }),
+});
+
+// Chatroom Type
+const ChatroomType = new GraphQLObjectType({
+  name: 'Chatroom',
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    messages: {
+      type: new GraphQLList(MessageType),
+      resolve(parent, args) {
+        return Message.filter((message) => message.chatroomId === parent.id);
+      },
+    },
+  }),
+});
+
+// Root Query
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    users: {
-      type: new GraphQLList(UserType),
-      resolve(parent, args) {
-        return users;
-      },
-    },
     user: {
       type: UserType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return users.find((user) => user.id === args.id);
-      },
-    },
-    posts: {
-      type: new GraphQLList(PostType),
-      resolve(parent, args) {
-        return posts;
+        return User.findById(args.id);
       },
     },
     post: {
       type: PostType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return posts.find((post) => post.id === args.id);
+        return Post.findById(args.id);
+      },
+    },
+    comment: {
+      type: CommentType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Comment.findById(args.id);
+      },
+    },
+    message: {
+      type: MessageType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Message.findById(args.id);
+      },
+    },
+    chatroom: {
+      type: ChatroomType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Chatroom.findById(args.id);
+      },
+    },
+
+    users: {
+      type: new GraphQLList(UserType),
+      resolve(parent, args) {
+        return User.find();
+      },
+    },
+    posts: {
+      type: new GraphQLList(PostType),
+      resolve(parent, args) {
+        return Post.find();
       },
     },
     comments: {
       type: new GraphQLList(CommentType),
       resolve(parent, args) {
-        return comments;
+        return Comment.find();
+      },
+    },
+    messages: {
+      type: new GraphQLList(MessageType),
+      resolve(parent, args) {
+        return Message.find();
+      },
+    },
+    chatrooms: {
+      type: new GraphQLList(ChatroomType),
+      resolve(parent, args) {
+        return Chatroom.find();
       },
     },
   },
