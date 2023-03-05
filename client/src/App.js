@@ -6,7 +6,9 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import HomePage from 'scenes/HomePage.jsx';
-// import Test from 'scenes/Test.jsx';
+import Blog from 'scenes/Blog.jsx';
+import Projects from 'scenes/Projects.jsx';
+import Chatroom from 'scenes/Chatroom.jsx';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3001/graphql',
@@ -26,6 +28,9 @@ function App() {
             <CssBaseline />
             <Routes>
               <Route path="/home" element={<HomePage />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/chatroom" element={<Chatroom />} />
             </Routes>
           </ThemeProvider>
         </BrowserRouter>

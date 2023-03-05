@@ -15,8 +15,9 @@ import {
   AutoStoriesOutlined,
   DarkMode,
   LightMode,
-  Notifications,
+  HomeOutlined,
   FolderCopy,
+  Chat,
   Menu,
   Close,
 } from "@mui/icons-material";
@@ -56,7 +57,7 @@ const Navbar = () => {
               cursor: "pointer",
             },
           }}>
-          Mark DeKraker
+          MD
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
@@ -74,10 +75,40 @@ const Navbar = () => {
 
       {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
-        <FlexBetween gap="2rem">
-          <AutoStoriesOutlined sx={{ fontSize: "25px" }} />
-          <Notifications sx={{ fontSize: "25px" }} />
-          <FolderCopy sx={{ fontSize: "25px" }} />
+        <FlexBetween gap="1rem">
+          <IconButton>
+            <HomeOutlined
+              onClick={() => navigate("/home")}
+              sx={{
+                fontSize: "25px",
+              }}
+            />
+          </IconButton>
+
+          {/* BLOG */}
+          <IconButton>
+            <AutoStoriesOutlined
+              onClick={() => navigate("/blog")}
+              sx={{ fontSize: "25px" }}
+            />
+          </IconButton>
+
+          {/* PROJECTS */}
+          <IconButton>
+            <FolderCopy
+              onClick={() => navigate("/projects")}
+              sx={{ fontSize: "25px" }}
+            />
+          </IconButton>
+
+          {/* CHAT */}
+          <IconButton>
+            <Chat
+              onClick={() => navigate("/chatroom")}
+              sx={{ fontSize: "25px" }}
+            />
+          </IconButton>
+
           <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
@@ -142,6 +173,22 @@ const Navbar = () => {
             justifyContent="center"
             alignItems="center"
             gap="3rem">
+            <HomeOutlined
+              sx={{ fontSize: "25px" }}
+              onClick={() => navigate("/home")}
+            />
+            <AutoStoriesOutlined
+              sx={{ fontSize: "25px" }}
+              onClick={() => navigate("/blog")}
+            />
+            <FolderCopy
+              sx={{ fontSize: "25px" }}
+              onClick={() => navigate("/projects")}
+            />
+            <Chat
+              sx={{ fontSize: "25px" }}
+              onClick={() => navigate("/chatroom")}
+            />
             <IconButton
               onClick={() => dispatch(setMode())}
               sx={{ fontSize: "25px" }}>
@@ -151,9 +198,6 @@ const Navbar = () => {
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton>
-            <AutoStoriesOutlined sx={{ fontSize: "25px" }} />
-            <Notifications sx={{ fontSize: "25px" }} />
-            <FolderCopy sx={{ fontSize: "25px" }} />
             <FormControl variant="standard" value={fullName}>
               <Select
                 value={fullName}
