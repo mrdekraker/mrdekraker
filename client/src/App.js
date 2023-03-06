@@ -6,6 +6,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import HomePage from 'scenes/HomePage.jsx';
+import About from 'scenes/About.jsx';
 import Blog from 'scenes/Blog.jsx';
 import Projects from 'scenes/Projects.jsx';
 import Chatroom from 'scenes/Chatroom.jsx';
@@ -28,6 +29,7 @@ function App() {
             <CssBaseline />
             <Routes>
               <Route path="/home" element={<HomePage />} />
+              <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/chatroom" element={<Chatroom />} />

@@ -16,6 +16,7 @@ import {
   DarkMode,
   LightMode,
   HomeOutlined,
+  Fingerprint,
   FolderCopy,
   Chat,
   Menu,
@@ -40,18 +41,19 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  // const fullName = `${user.firstName} ${user.lastName}`;
+  // TODO const fullName = `${user.firstName} ${user.lastName}`;
   const fullName = `Mark DeKraker`;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       <FlexBetween gap="1.75rem">
         <Typography
-          fontWeight="bold"
+          fontFamily="Playfair Display"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="primary"
           onClick={() => navigate("/home")}
           sx={{
+            fontWeight: "700",
             "&:hover": {
               color: primaryLight,
               cursor: "pointer",
@@ -82,6 +84,14 @@ const Navbar = () => {
               sx={{
                 fontSize: "25px",
               }}
+            />
+          </IconButton>
+
+          {/* ABOUT */}
+          <IconButton>
+            <Fingerprint
+              onClick={() => navigate("/about")}
+              sx={{ fontSize: "25px" }}
             />
           </IconButton>
 
@@ -173,31 +183,47 @@ const Navbar = () => {
             justifyContent="center"
             alignItems="center"
             gap="3rem">
-            <HomeOutlined
-              sx={{ fontSize: "25px" }}
-              onClick={() => navigate("/home")}
-            />
-            <AutoStoriesOutlined
-              sx={{ fontSize: "25px" }}
-              onClick={() => navigate("/blog")}
-            />
-            <FolderCopy
-              sx={{ fontSize: "25px" }}
-              onClick={() => navigate("/projects")}
-            />
-            <Chat
-              sx={{ fontSize: "25px" }}
-              onClick={() => navigate("/chatroom")}
-            />
-            <IconButton
-              onClick={() => dispatch(setMode())}
-              sx={{ fontSize: "25px" }}>
-              {theme.palette.mode === "dark" ? (
-                <DarkMode sx={{ fontSize: "25px" }} />
-              ) : (
-                <LightMode sx={{ color: dark, fontSize: "25px" }} />
-              )}
+            <IconButton>
+              <HomeOutlined
+                onClick={() => navigate("/home")}
+                sx={{
+                  fontSize: "25px",
+                }}
+              />
             </IconButton>
+
+            {/* ABOUT */}
+            <IconButton>
+              <Fingerprint
+                onClick={() => navigate("/about")}
+                sx={{ fontSize: "25px" }}
+              />
+            </IconButton>
+
+            {/* BLOG */}
+            <IconButton>
+              <AutoStoriesOutlined
+                onClick={() => navigate("/blog")}
+                sx={{ fontSize: "25px" }}
+              />
+            </IconButton>
+
+            {/* PROJECTS */}
+            <IconButton>
+              <FolderCopy
+                onClick={() => navigate("/projects")}
+                sx={{ fontSize: "25px" }}
+              />
+            </IconButton>
+
+            {/* CHAT */}
+            <IconButton>
+              <Chat
+                onClick={() => navigate("/chatroom")}
+                sx={{ fontSize: "25px" }}
+              />
+            </IconButton>
+
             <FormControl variant="standard" value={fullName}>
               <Select
                 value={fullName}
@@ -223,6 +249,13 @@ const Navbar = () => {
                 </MenuItem>
               </Select>
             </FormControl>
+            <IconButton onClick={() => dispatch(setMode())}>
+              {theme.palette.mode === "dark" ? (
+                <DarkMode sx={{ fontSize: "20px" }} />
+              ) : (
+                <LightMode sx={{ color: dark, fontSize: "20px" }} />
+              )}
+            </IconButton>
           </FlexBetween>
         </Box>
       )}

@@ -1,5 +1,5 @@
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Facebook, Instagram, Twitter, LinkedIn } from "@mui/icons-material";
+import { Facebook, Instagram, Twitter, LinkedIn, GitHub } from "@mui/icons-material";
 import FlexBetween from "../components/FlexBetween";
 
 const Footer = () => {
@@ -84,6 +84,21 @@ const Footer = () => {
               sx={{
                 fontSize: "25px",
                 color: theme.palette.mode === "dark" ? "#0e76a8" : "#0e76a8",
+              }}
+            />
+          </IconButton>
+          <IconButton
+            onClick={() =>
+              window.open(
+                "https://github.com/mrdekraker",
+                "_blank",
+                "noopener,noreferrer"
+              )}
+          >
+            <GitHub
+              sx={{
+                fontSize: "25px",
+                color: theme.palette.mode === "dark" ? "#333" : "#333",
               }}
             />
           </IconButton>
