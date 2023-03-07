@@ -7,6 +7,7 @@ import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import HomePage from 'scenes/HomePage.jsx';
 import About from 'scenes/About.jsx';
+import Contact from 'scenes/Contact.jsx';
 import Blog from 'scenes/Blog.jsx';
 import Projects from 'scenes/Projects.jsx';
 import Chatroom from 'scenes/Chatroom.jsx';
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/home" element={<HomePage />} />
               <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/chatroom" element={<Chatroom />} />
