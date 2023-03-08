@@ -1,9 +1,8 @@
-import { Box, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Facebook, Instagram, Twitter, LinkedIn, GitHub } from "@mui/icons-material";
 import FlexBetween from "../components/FlexBetween";
 
 const Footer = () => {
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const theme = useTheme();
 
   return (
@@ -11,12 +10,10 @@ const Footer = () => {
       sx={{
         position: "fixed",
         bottom: 0,
-        width: isNonMobileScreens ? "inherit" : "100%",
-        maxWidth: isNonMobileScreens ? "inherit" : "400px",
-        padding: "1rem",
+        width: "100%",
+        padding: "0.75rem",
         backgroundColor: theme.palette.background.alt,
         color: theme.palette.text.secondary,
-        // footer should shrink to fit mobile screens
         margin: "0 auto",
       }}>
       <FlexBetween>

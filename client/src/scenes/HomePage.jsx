@@ -1,9 +1,11 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 import Navbar from "./Navbar";
+import IconsSocial from "./widgets/IconsSocial";
 import Footer from "./Footer";
 import brush from "assets/brush.png";
 import mdek from "assets/mdek.png";
+import FlexBetween from "components/FlexBetween";
 import mResume from "assets/mdek_resume.pdf";
 import { GradientButton, GradientButtonOutline } from "components/Buttons";
 import { useNavigate } from "react-router-dom";
@@ -33,21 +35,27 @@ const HomePage = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <Box>
       <Navbar />
+
+      {/* CONTENT CONTAINER */}
       <Box
-        // border="1px solid orange"
-        width="100%"
-        minHeight={isNonMobileScreens ? "calc(100vh - 170px)" : "auto"}
+        border="1px solid orange"
+        width={isNonMobileScreens ? "100%" : "100%"}
+        // set height to touch bottom of Navbar and top of Footer
+        minHeight={isNonMobileScreens ? "calc(100vh - 162px)" : "auto"}
         padding="2rem 3%"
         display="flex"
-        flexDirection={isNonMobileScreens ? "row" : "column"} // set flexDirection to "column" for mobile screens
+        flexDirection={isNonMobileScreens ? "row" : "column"}
         gap="0.5rem"
-        justifyContent="space-between">
+        justifyContent="space-between"
+        sx={{
+          overflow: "hidden",
+          margin: "0",
+        }}>
+        {/* LEFT COLUMN */}
         <Box
-          // border="1px solid red"
           width={isNonMobileScreens ? "50%" : "100%"}
-          flexShrink={0}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -58,7 +66,6 @@ const HomePage = () => {
           <Box display="flex">
             <Typography
               fontFamily="Playfair Display"
-              fontWeight="600"
               fontSize="clamp(2rem, 3rem, 3.5rem)">
               Mark&nbsp;
             </Typography>
@@ -88,21 +95,17 @@ const HomePage = () => {
               DeKraker
             </Typography>
           </Box>
+
+          {/* LEFT COLUMN SUBTEXT */}
           <Box
-            margin="1rem auto"
-            width="50%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
             alignItems="center">
-            <Typography>
+            <Typography fontSize="clamp(0.8rem, 1rem, 1.2rem)">
               MERN Full Stack Web Developer // Lifelong Learner
             </Typography>
           </Box>
 
-          {/* CALL TO ACTIONS */}
+          {/* LEFT COLUMN CALL TO ACTION */}
           <Box
-            border="1px solid #fff"
             padding="1.25rem 0"
             display="flex"
             justifyContent="space-between"
@@ -116,12 +119,14 @@ const HomePage = () => {
               variant="contained"
               // borderRadius="0.1rem 0 0 0.1rem"
               sx={{
+                boxShadow: "none",
+                borderRadius: "0.1rem 0 0 0.1rem",
                 width: "10rem",
                 "&:hover": {
-                  color: theme.palette.primary.light,
+                  color: "#fff",
+                  boxShadow: "none",
                 },
-              }}
-            >
+              }}>
               <Typography
                 fontFamily={"Playfair Display"}
                 fontSize="clamp(1rem, 1.2rem, 1.8rem)"
@@ -132,57 +137,42 @@ const HomePage = () => {
 
             <GradientButtonOutline
               onClick={downloadResume}
-              variant="contained"
-              color="primary"
-              borderRadius="0.1rem 0 0 0.1rem"
+              variant="text"
               sx={{
+                background: theme.palette.mode === "dark" ? "#000" : "#FFF",
+                color: theme.palette.mode === "dark" ? "000" : "#000",
                 width: "10rem",
                 "&:hover": {
-                  backgroundColor: theme.palette.primary.light,
+                  background: "#FFF",
+                  color: "#DC4492",
                 },
-              }}
-            >
+              }}>
               <Typography
-                color="#DC4492"
                 fontFamily={"Playfair Display"}
                 fontSize="clamp(1rem, 1.2rem, 1.8rem)"
-                fontWeight="600">
+                fontWeight="600"
+              >
                 RESUMÉ
               </Typography>
             </GradientButtonOutline>
           </Box>
+          
+          {/* SOCIAL ICONS */}
+          <FlexBetween>
+            <IconsSocial />
+          </FlexBetween>
         </Box>
+
+        {/* RIGHT COLUMN */}
         <Box
-          margin="1rem auto"
           width={isNonMobileScreens ? "50%" : "100%"}
-          flexShrink={0}
-          order={isNonMobileScreens ? 1 : 0}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            filter: "grayscale(100%)",
-            "&:hover": {
-              transition: "all 0.5s ease",
-              filter: "grayscale(0%)",
-            },
-            // image should shrink to fit container
-            // set max width of the image
-            maxWidth: "600px",
-          }}>
-          <img
-            src={mdek}
-            alt="Mark DeKraker"
-            width="100%"
-            height="auto"
-            // sx={{
-            //   maxWidth: "600px",
-            // }}
-          />
+          border="1px solid green">
+          <Typography>Right Side</Typography>
         </Box>
       </Box>
       <Footer />
     </Box>
   );
-};
+}
 
 export default HomePage;

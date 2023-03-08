@@ -11,11 +11,18 @@ export const GradientButton = styled(Button)(({ theme }) => ({
 }));
 
 export const GradientButtonOutline = styled(Button)(({ theme }) => ({
-  background: "transparent",
+  // background: "transparent",
+  background: "none",
+  // background: "#03045E",
   border: "2px solid transparent",
   borderImage: "linear-gradient(90deg, #24CBFF, #FC59FF, #FFBD0C)",
   borderImageSlice: 1,
-  color: "#fff",
+  // color: "#fff",
+  // color: "black",
+  // hover: {
+  //   background: "none",
+  //   color: "#fff",
+  // }
 }));
 
 
