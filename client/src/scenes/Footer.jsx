@@ -8,14 +8,13 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        position: "fixed",
-        bottom: 0,
         width: "100%",
         padding: "0.75rem",
         backgroundColor: theme.palette.background.alt,
         color: theme.palette.text.secondary,
         margin: "0 auto",
-      }}>
+      }}
+    >
       <FlexBetween>
         <Box
           sx={{
@@ -103,7 +102,7 @@ const Footer = () => {
         </Box>
       </FlexBetween>
       <Typography
-        variant="body2"
+        fontSize="clamp(0.5rem, 0.8rem, 1.2rem)"
         sx={{
           textAlign: "center",
           "&:hover": {

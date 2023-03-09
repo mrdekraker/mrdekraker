@@ -35,26 +35,28 @@ const HomePage = () => {
   };
 
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" width="100vw" height="100%">
       <Navbar />
 
       {/* CONTENT CONTAINER */}
       <Box
-        border="1px solid orange"
-        width={isNonMobileScreens ? "100%" : "100%"}
+        // border="1px solid orange"
+        // width={isNonMobileScreens ? "100%" : "100%"}
         // set height to touch bottom of Navbar and top of Footer
-        minHeight={isNonMobileScreens ? "calc(100vh - 162px)" : "auto"}
+        // minHeight={isNonMobileScreens ? "calc(100vh - 162px)" : "auto"}
         padding="2rem 3%"
+        flexGrow={1}
         display="flex"
         flexDirection={isNonMobileScreens ? "row" : "column"}
         gap="0.5rem"
         justifyContent="space-between"
         sx={{
-          overflow: "hidden",
+          overflowX: "hidden",
           margin: "0",
         }}>
         {/* LEFT COLUMN */}
         <Box
+          // border="1px solid red"
           width={isNonMobileScreens ? "50%" : "100%"}
           sx={{
             display: "flex",
@@ -97,8 +99,7 @@ const HomePage = () => {
           </Box>
 
           {/* LEFT COLUMN SUBTEXT */}
-          <Box
-            alignItems="center">
+          <Box alignItems="center">
             <Typography fontSize="clamp(0.8rem, 1rem, 1.2rem)">
               MERN Full Stack Web Developer // Lifelong Learner
             </Typography>
@@ -150,13 +151,12 @@ const HomePage = () => {
               <Typography
                 fontFamily={"Playfair Display"}
                 fontSize="clamp(1rem, 1.2rem, 1.8rem)"
-                fontWeight="600"
-              >
+                fontWeight="600">
                 RESUMÉ
               </Typography>
             </GradientButtonOutline>
           </Box>
-          
+
           {/* SOCIAL ICONS */}
           <FlexBetween>
             <IconsSocial />
@@ -164,10 +164,36 @@ const HomePage = () => {
         </Box>
 
         {/* RIGHT COLUMN */}
-        <Box
-          width={isNonMobileScreens ? "50%" : "100%"}
-          border="1px solid green">
-          <Typography>Right Side</Typography>
+        <Box margin=".5rem auto" width={isNonMobileScreens ? "50%" : "100%"}>
+          <Box
+            sx={{
+              maxWidth: "480px",
+              justifyContent: "center",
+              position: "relative",
+              filter: "grayscale(100%)",
+              "&:before": {
+                content: "''",
+                position: "absolute",
+                top: "-1rem",
+                left: "-1rem",
+                width: "calc(100% - .5rem)",
+                height: "calc(100%)",
+                zIndex: "-1",
+                border: isNonMobileScreens ? `2px solid ${primaryLight}` : "none",
+              },
+              "&:hover": {
+                filter: "grayscale(0%)",
+                transition: "all 0.5s ease",
+              },
+            }}>
+            <img
+              flexShrink={0}
+              src={mdek}
+              alt="Mark DeKraker"
+              width="100%"
+              height="auto"
+            />
+          </Box>
         </Box>
       </Box>
       <Footer />

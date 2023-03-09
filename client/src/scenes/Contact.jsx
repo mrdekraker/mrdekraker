@@ -5,9 +5,9 @@ import Footer from "./Footer";
 
 const HomePage = () => {
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" width="100vw" height="100%">
       <Navbar />
-      <Typography>This is the contact me page</Typography>
+      <Typography>This is where the content goes</Typography>
       <Footer />
     </Box>
   );
