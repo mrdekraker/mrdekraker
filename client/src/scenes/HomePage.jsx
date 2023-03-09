@@ -40,10 +40,6 @@ const HomePage = () => {
 
       {/* CONTENT CONTAINER */}
       <Box
-        // border="1px solid orange"
-        // width={isNonMobileScreens ? "100%" : "100%"}
-        // set height to touch bottom of Navbar and top of Footer
-        // minHeight={isNonMobileScreens ? "calc(100vh - 162px)" : "auto"}
         padding="2rem 3%"
         flexGrow={1}
         display="flex"
@@ -164,10 +160,18 @@ const HomePage = () => {
         </Box>
 
         {/* RIGHT COLUMN */}
-        <Box margin=".5rem auto" width={isNonMobileScreens ? "50%" : "100%"}>
+        <Box
+          margin=".5rem auto"
+          width={isNonMobileScreens ? "50%" : "100%"}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
           <Box
             sx={{
-              maxWidth: "480px",
+              maxWidth: "500px",
               justifyContent: "center",
               position: "relative",
               filter: "grayscale(100%)",
