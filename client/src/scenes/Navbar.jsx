@@ -45,7 +45,14 @@ const Navbar = () => {
   const fullName = `Mark DeKraker`;
 
   return (
-    <FlexBetween padding="1rem 6%" backgroundColor={alt}>
+    <FlexBetween
+      padding="1rem 6%"
+      backgroundColor={alt}
+      boxShadow={
+        isNonMobileScreens && theme.palette.mode === "light"
+          ? "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+          : "none"
+      }>
       <FlexBetween gap="1.75rem">
         <Typography
           fontFamily="Playfair Display"
@@ -169,8 +176,6 @@ const Navbar = () => {
           sx={{
             backgroundColor: `${background}e6`,
           }}>
-          
-        
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
             <IconButton

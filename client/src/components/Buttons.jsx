@@ -11,19 +11,18 @@ export const GradientButton = styled(Button)(({ theme }) => ({
 }));
 
 export const GradientButtonOutline = styled(Button)(({ theme }) => ({
-  // background: "transparent",
   background: "none",
-  // background: "#03045E",
   border: "2px solid transparent",
   borderImage: "linear-gradient(90deg, #24CBFF, #FC59FF, #FFBD0C)",
   borderImageSlice: 1,
-  // color: "#fff",
-  // color: "black",
-  // hover: {
-  //   background: "none",
-  //   color: "#fff",
-  // }
 }));
 
-
-// export default { GradientButton, GradientButtonOutline };
+export const ContactButton = styled(Button)(({ theme }) => ({
+  background: theme.palette.mode === "dark" ? "#000" : "#FFF",
+  color: theme.palette.mode === "dark" ? "000" : "#000",
+  width: "10rem",
+  "&:hover": {
+    background: "#FFF",
+    color: "#DC4492",
+  },
+}));

@@ -155,7 +155,7 @@ const HomePage = () => {
 
           {/* SOCIAL ICONS */}
           <FlexBetween>
-            <IconsSocial />
+            <IconsSocial display={isNonMobileScreens ? "" : "none"} />
           </FlexBetween>
         </Box>
 
@@ -167,8 +167,7 @@ const HomePage = () => {
             display: "flex",
             alignItems: "center",
             height: "100%",
-          }}
-        >
+          }}>
           <Box
             sx={{
               maxWidth: "500px",
@@ -183,7 +182,9 @@ const HomePage = () => {
                 width: "calc(100% - .5rem)",
                 height: "calc(100%)",
                 zIndex: "-1",
-                border: isNonMobileScreens ? `2px solid ${primaryLight}` : "none",
+                border: isNonMobileScreens
+                  ? `2px solid ${primaryLight}`
+                  : "none",
               },
               "&:hover": {
                 filter: "grayscale(0%)",
