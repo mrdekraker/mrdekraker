@@ -1,8 +1,9 @@
 import { Button, Box, IconButton, Typography, TextField, useMediaQuery, useTheme } from "@mui/material";
 import { Send } from "@mui/icons-material"
+// import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+// import axios from "axios";
 
 import { ContactButton } from "components/Buttons";
 import LineGradient from "components/LineGradient";
@@ -28,28 +29,28 @@ const Contact = () => {
       message: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
-      try {
-        const response = await axios.post(
-          "https://formsubmit.co/52edcdc9df4224d998079bae78fb4893",
-          {
-            name: values.name,
-            email: values.email,
-            message: values.message,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log(response);
-        // TODO: NOTIFY USER HERE
-      } catch (error) {
-        console.log(error);
-        // TODO: NOTIFY USER HERE
-      }
-    },
+    // onSubmit: async (values) => {
+    //   try {
+    //     const response = await axios.post(
+    //       "https://formsubmit.co/mrdekraker@gmail.com",
+    //       {
+    //         name: values.name,
+    //         email: values.email,
+    //         message: values.message,
+    //       },
+    //       {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //       }
+    //     );
+    //     console.log(response);
+    //     // TODO: NOTIFY USER HERE
+    //   } catch (error) {
+    //     console.log(error);
+    //     // TODO: NOTIFY USER HERE
+    //   }
+    // },
   });
   
   return (
@@ -67,9 +68,8 @@ const Contact = () => {
         <Box
           width={isNonMobileScreens ? "50%" : "100%"}
           sx={{
-            margin: "1.5rem auto"
-          }}
-        >
+            margin: "1.5rem auto",
+          }}>
           <Box
             flexDirection={isNonMobileScreens ? "row" : "column"}
             // flexDirection="row"
@@ -95,29 +95,30 @@ const Contact = () => {
           <Box
             margin="1.25rem 0"
             display="flex"
-            flexDirection={isNonMobileScreens ? "row" : "column"}
-          >
-            <Box>
-              
-            </Box>
+            flexDirection={isNonMobileScreens ? "row" : "column"}>
+            <Box></Box>
             <Typography>Email me directly at&nbsp;</Typography>
             <Typography
               color={theme.palette.mode === "dark" ? "primary" : "#DC4492"}
-              onClick={() => window.open("mailto:mrdekraker@gmail.com")}
+              onClick={() => window.open("mailto:markwritescode@gmail.com")}
               sx={{
                 cursor: "pointer",
                 "&:hover": {
                   textDecoration: "underline",
                 },
-              }}
-            >
-              mrdekraker@gmail.com
+              }}>
+              markwritescode@gmail.com
             </Typography>
             <Typography>&nbsp;or fill out the form below.</Typography>
           </Box>
 
           {/* FORM */}
-          <form onSubmit={formik.handleSubmit}>
+          <form
+            target="_blank"
+            onSubmit={formik.handleSubmit}
+            // action="https://formsubmit.co/52edcdc9df4224d998079bae78fb4893"
+            // method="POST"
+          >
             <TextField
               fullWidth
               id="name"
@@ -154,6 +155,7 @@ const Contact = () => {
               margin="normal"
             />
             <Button
+              // onClick={formik.handleSubmit}
               type="submit"
               variant="contained"
               endIcon={<Send />}
