@@ -8,7 +8,8 @@ import Projects from "./scenes/Projects";
 import NavBar from "./scenes/NavBar";
 
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMode } from "./state";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
