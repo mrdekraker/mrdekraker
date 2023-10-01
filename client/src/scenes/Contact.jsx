@@ -1,9 +1,36 @@
-import React from "react";
+import { Formik } from "formik";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import ContactForm from "../scenes/ContactForm";
 
-export default function Contact() {
+const Contact = () => {
+  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const theme = useTheme();
+
   return (
-    <div>
-      <h1>Contact Page!</h1>
-    </div>
+    <Box
+      border="2px solid red"
+      width="100%"
+      padding="2rem 6%"
+      display="flex" // Always display flex to align items side by side
+      flexDirection={isNonMobileScreens ? "row" : "column"} // Stack on small screens
+      alignItems="center" // Vertically center items
+      gap="0.5rem"
+    >
+      <Box>
+        <Typography
+          fontSize="clamp(1.5rem, 2.25rem, 3rem)"
+          color={theme.palette.primary.dark}>
+          CONTACT ME
+        </Typography>
+        <Typography
+          fontSize="clamp(1.5rem, 2.25rem, 3rem)"
+          color={theme.palette.primary.main}>
+          TO GET STARTED!
+        </Typography>
+      </Box>
+      <h1>Import Form here</h1>
+    </Box>
   );
-}
+};
+
+export default Contact;

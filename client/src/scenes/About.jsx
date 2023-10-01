@@ -1,9 +1,12 @@
-import React from 'react';
+import { Box, useMediaQuery } from "@mui/material";
 
-export default function About() {
+const About = () => {
+    const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
     return (
-        <div>
-        <h1>About Page!</h1>
-        </div>
+        <Box>
+
+        </Box>
     );
 }
+
+export default About;
