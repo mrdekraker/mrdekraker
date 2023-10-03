@@ -36,6 +36,7 @@ const NavBar = () => {
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
+  const mainLight = theme.palette.primary.mainLight;
   const alt = theme.palette.background.alt;
 
   return (
@@ -49,7 +50,7 @@ const NavBar = () => {
           onClick={() => navigate("/")}
           sx={{
             "&:hover": {
-              color: primaryLight,
+              color: mainLight,
               cursor: "pointer",
             },
           }}>

@@ -1,10 +1,11 @@
-import { Box, useTheme, Typography } from "@mui/material";
+import { Box, useMediaQuery, useTheme, Typography } from "@mui/material";
 import Narnia from "../assets/littleNarnia.jpg";
 
 const Landing = () => {
   const theme = useTheme();
 
-  const navbarHeight = 80; // Replace with the actual height of your navbar
+  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const navbarHeight = 80;
 
   return (
     <Box
@@ -18,14 +19,31 @@ const Landing = () => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        overflowX: "hidden",
+        overflowY: "hidden",
+        textAlign: "center", // Add this line
       }}>
-      <Typography
-        color="#C6F6D5"
-        fontSize="clamp(3rem, 5rem, 7.5rem)"
-        padding="1rem"
-        backgroundColor="rgba(0,0,0,0.5)">
-        M.DeKraker
-      </Typography>
+      <Box padding="1rem" backgroundColor="rgba(0,0,0,0.5)">
+        <Typography
+          fontFamily="League Spartan"
+          color="#C6F6D5"
+          fontSize={
+            isNonMobileScreens ? "clamp(3rem, 5.5rem, 7.5rem)" : "3rem"
+          }>
+          M.DeKraker
+        </Typography>
+        <Typography
+          // fontFamily="League Spartan"
+          fontWeight="lighter"
+          fontStyle="italic"
+          color="#C6F6D5"
+          fontSize={
+            isNonMobileScreens ? "clamp(1rem, 1.5rem, 3rem)" : "1.5rem"
+          }>
+          Worshipper | Husband | Father | Full Stack Developer | Musician |
+          Athlete
+        </Typography>
+      </Box>
     </Box>
   );
 };

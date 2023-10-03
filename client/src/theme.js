@@ -38,44 +38,45 @@ export const themeSettings = (mode) => {
       mode: mode,
       ...(mode === "dark"
         ? {
-          // Dark Mode Palette
-          primary: {
-            dark: colorTokens.primary[200],
-            main: colorTokens.primary[500],
-            mainDark: colorTokens.primary[900],
-            light: colorTokens.primary[800],
-          },
-          neutral: {
-            dark: colorTokens.grey[100],
-            main: colorTokens.grey[200],
-            mediumMain: colorTokens.grey[300],
-            medium: colorTokens.grey[400],
-            light: colorTokens.grey[700],
-          },
-          background: {
-            default: colorTokens.grey[900],
-            alt: colorTokens.grey[800],
-          },
-        }
+            // Dark Mode Palette
+            primary: {
+              dark: colorTokens.primary[200],
+              main: colorTokens.primary[500],
+              mainLight: colorTokens.primary[700],
+              light: colorTokens.primary[800],
+            },
+            neutral: {
+              dark: colorTokens.grey[100],
+              main: colorTokens.grey[200],
+              mediumMain: colorTokens.grey[300],
+              medium: colorTokens.grey[400],
+              light: colorTokens.grey[700],
+            },
+            background: {
+              default: colorTokens.grey[900],
+              alt: colorTokens.grey[800],
+            },
+          }
         : {
-          // Light Mode Palette
-          primary: {
-            dark: colorTokens.primary[700],
-            main: colorTokens.primary[500],
-            light: colorTokens.primary[50],
-          },
-          neutral: {
-            dark: colorTokens.grey[700],
-            main: colorTokens.grey[500],
-            mediumMain: colorTokens.grey[400],
-            medium: colorTokens.grey[300],
-            light: colorTokens.grey[50],
-          },
-          background: {
-            default: colorTokens.grey[10],
-            alt: colorTokens.grey[0],
-          },
-        }),
+            // Light Mode Palette
+            primary: {
+              dark: colorTokens.primary[700],
+              main: colorTokens.primary[500],
+              mainLight: colorTokens.primary[400],
+              light: colorTokens.primary[50],
+            },
+            neutral: {
+              dark: colorTokens.grey[700],
+              main: colorTokens.grey[500],
+              mediumMain: colorTokens.grey[400],
+              medium: colorTokens.grey[300],
+              light: colorTokens.grey[50],
+            },
+            background: {
+              default: colorTokens.grey[10],
+              alt: colorTokens.grey[0],
+            },
+          }),
     },
 
     // set up typography for Libre Baskerville and League Spartan
