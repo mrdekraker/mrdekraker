@@ -33,11 +33,14 @@ const NavBar = () => {
 
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
-  const dark = theme.palette.neutral.dark;
-  const background = theme.palette.background.default;
-  const primaryLight = theme.palette.primary.light;
   const main = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
+
+  // HANDLE MOBILE MENU TOGGLE
+  const handleMobileMenuClick = (path) => {
+    setIsMobileMenuToggled(!isMobileMenuToggled);
+    navigate(path);
+  }
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -141,13 +144,14 @@ const NavBar = () => {
       {!isNonMobileScreens && isMobileMenuToggled && (
         <Box
           position="fixed"
-          right="0"
-          bottom="0"
-          height="100%"
+          top="0"
+          left="0"
+          height="100vh"
+          width="100vw"
           zIndex="10"
-          maxWidth="500px"
-          minWidth="300px"
-          backgroundColor={background}>
+          // backgroundColor={`rgba(${background}, 0.9)`}
+          backgroundColor="rgba(0, 0, 0, 0.95)"
+        >
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
             <IconButton
@@ -164,30 +168,63 @@ const NavBar = () => {
             alignItems="center"
             gap="3rem">
             <Home
-              sx={{ fontSize: "25px" }}
-              onClick={() => navigate("/")}
+              sx={{
+                fontSize: "25px",
+                color:
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.dark
+                    : "",
+              }}
+              // onClick={() => navigate("/")}
+              onClick={() => handleMobileMenuClick("/")}
               cursor="pointer"
             />
-            <LaptopChromebook 
-              sx={{ fontSize: "25px" }} 
-              onClick={() => navigate("/blog")}
-              cursor="pointer"  
+            <LaptopChromebook
+              sx={{
+                fontSize: "25px",
+                color:
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.dark
+                    : "",
+              }}
+              // onClick={() => navigate("/blog")}
+              onClick={() => handleMobileMenuClick("/blog")}
+              cursor="pointer"
             />
-            <PermMedia 
-              sx={{ fontSize: "25px" }} 
-              onClick={() => navigate("/projects")}
-              cursor="pointer"  
+            <PermMedia
+              sx={{
+                fontSize: "25px",
+                color:
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.dark
+                    : "",
+              }}
+              // onClick={() => navigate("/projects")}
+              onClick={() => handleMobileMenuClick("/projects")}
+              cursor="pointer"
             />
-            <AccountBox 
-              sx={{ fontSize: "25px" }} 
-              onClick={() => navigate("/contact")}
+            <AccountBox
+              sx={{
+                fontSize: "25px",
+                color:
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.dark
+                    : "",
+              }}
+              // onClick={() => navigate("/contact")}
+              onClick={() => handleMobileMenuClick("/contact")}
               cursor="pointer"
             />
             <IconButton onClick={() => dispatch(setMode())}>
               {theme.palette.mode === "dark" ? (
                 <DarkMode sx={{ fontSize: "25px" }} />
               ) : (
-                <LightMode sx={{ color: dark, fontSize: "25px" }} />
+                <LightMode
+                  sx={{
+                    color: theme.palette.primary.dark,
+                    fontSize: "25px",
+                  }}
+                />
               )}
             </IconButton>
           </FlexBetween>
