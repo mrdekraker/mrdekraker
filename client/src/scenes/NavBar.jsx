@@ -36,7 +36,7 @@ const NavBar = () => {
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
-  const mainLight = theme.palette.primary.mainLight;
+  const main = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
 
   return (
@@ -50,7 +50,7 @@ const NavBar = () => {
           onClick={() => navigate("/")}
           sx={{
             "&:hover": {
-              color: mainLight,
+              color: main,
               cursor: "pointer",
             },
           }}>
@@ -74,22 +74,46 @@ const NavBar = () => {
       {isNonMobileScreens ? (
         <FlexBetween gap="2rem">
           <Home
-            sx={{ fontSize: "25px" }}
+            sx={{
+              fontSize: "25px",
+              color:
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.dark
+                  : "",
+            }}
             onClick={() => navigate("/")}
             cursor="pointer"
           />
-          <LaptopChromebook 
-            sx={{ fontSize: "25px" }} 
+          <LaptopChromebook
+            sx={{
+              fontSize: "25px",
+              color:
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.dark
+                  : "",
+            }}
             onClick={() => navigate("/blog")}
-            cursor="pointer"  
+            cursor="pointer"
           />
-          <PermMedia 
-            sx={{ fontSize: "25px" }} 
+          <PermMedia
+            sx={{
+              fontSize: "25px",
+              color:
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.dark
+                  : "",
+            }}
             onClick={() => navigate("/projects")}
-            cursor="pointer"  
+            cursor="pointer"
           />
-          <AccountBox 
-            sx={{ fontSize: "25px" }} 
+          <AccountBox
+            sx={{
+              fontSize: "25px",
+              color:
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.dark
+                  : "",
+            }}
             onClick={() => navigate("/contact")}
             cursor="pointer"
           />
@@ -97,7 +121,12 @@ const NavBar = () => {
             {theme.palette.mode === "dark" ? (
               <DarkMode sx={{ fontSize: "25px" }} />
             ) : (
-              <LightMode sx={{ color: dark, fontSize: "25px" }} />
+              <LightMode
+                sx={{
+                  color: theme.palette.primary.dark,
+                  fontSize: "25px",
+                }}
+              />
             )}
           </IconButton>
         </FlexBetween>
