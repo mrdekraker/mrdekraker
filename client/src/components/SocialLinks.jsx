@@ -4,50 +4,30 @@ import FlexBetween from "./FlexBetween";
 
 
 const SocialLinks = () => {
+
   return (
-    <Box>
-      <FlexBetween gap="1rem" />
+    <FlexBetween gap="0.5rem" paddingLeft="0.5rem">
       <GitHub
         cursor="pointer"
-        onClick={() =>
-          window.open(
-            "http://www.github.com/mrdekraker",
-            "blank",
-            "noopener noreferrer"
-          )
-        }
+        sx={{ fontSize: "25px" }}
+        onClick={() => window.open("http://www.github.com/mrdekraker", "_blank", "noopener noreferrer")}
       />
       <LinkedIn
         cursor="pointer"
-        onClick={() =>
-          window.open(
-            "http://www.linkedin.com/in/mdek",
-            "blank",
-            "noopener noreferrer"
-          )
-        }
-      />
-      <Instagram
-        cursor="pointer"
-        onClick={() =>
-          window.open(
-            "http://www.instagram.com/mrdekraker",
-            "blank",
-            "noopener noreferrer"
-          )
-        }
+        sx={{ fontSize: "25px" }}
+        onClick={() => window.open("http://www.linkedin.com/in/mdek", "_blank", "noopener noreferrer")}
       />
       <Twitter
         cursor="pointer"
-        onClick={() =>
-          window.open(
-            "http://www.twitter.com/mrdekraker",
-            "blank",
-            "noopener noreferrer"
-          )
-        }
+        sx={{ fontSize: "25px" }}
+        onClick={() => window.open("http://www.twitter.com/mrdekraker", "_blank", "noopener noreferrer")}
       />
-    </Box>
+      <Instagram
+        cursor="pointer"
+        sx={{ fontSize: "25px" }}
+        onClick={() => window.open("http://www.instagram.com/mrdekraker", "_blank", "noopener noreferrer")}
+      />
+    </FlexBetween>
   );
 }
 
