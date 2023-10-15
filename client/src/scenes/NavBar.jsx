@@ -50,7 +50,6 @@ const NavBar = () => {
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="primary"
-          onClick={() => navigate("/")}
           sx={{
             "&:hover": {
               color: main,
@@ -81,10 +80,10 @@ const NavBar = () => {
               fontSize: "25px",
               color:
                 theme.palette.mode === "light"
-                  ? theme.palette.primary.dark
+                  ? theme.palette.primary.main
                   : "",
             }}
-            onClick={() => navigate("/")}
+            onClick={() => handleMobileMenuClick("/")}
             cursor="pointer"
           />
           <LaptopChromebook
@@ -92,10 +91,10 @@ const NavBar = () => {
               fontSize: "25px",
               color:
                 theme.palette.mode === "light"
-                  ? theme.palette.primary.dark
+                  ? theme.palette.primary.main
                   : "",
             }}
-            onClick={() => navigate("/blog")}
+            onClick={() => handleMobileMenuClick("/blog")}
             cursor="pointer"
           />
           <PermMedia
@@ -103,10 +102,10 @@ const NavBar = () => {
               fontSize: "25px",
               color:
                 theme.palette.mode === "light"
-                  ? theme.palette.primary.dark
+                  ? theme.palette.primary.main
                   : "",
             }}
-            onClick={() => navigate("/projects")}
+            onClick={() => handleMobileMenuClick("/projects")}
             cursor="pointer"
           />
           <AccountBox
@@ -114,10 +113,10 @@ const NavBar = () => {
               fontSize: "25px",
               color:
                 theme.palette.mode === "light"
-                  ? theme.palette.primary.dark
+                  ? theme.palette.primary.main
                   : "",
             }}
-            onClick={() => navigate("/contact")}
+            onClick={() => handleMobileMenuClick("/contact")}
             cursor="pointer"
           />
           <IconButton onClick={() => dispatch(setMode())}>
@@ -126,7 +125,7 @@ const NavBar = () => {
             ) : (
               <LightMode
                 sx={{
-                  color: theme.palette.primary.dark,
+                  color: theme.palette.primary.main,
                   fontSize: "25px",
                 }}
               />
@@ -147,16 +146,27 @@ const NavBar = () => {
           top="0"
           left="0"
           height="100vh"
-          width="100vw"
+          width="101vw"
+          // width="80%"
           zIndex="10"
-          // backgroundColor={`rgba(${background}, 0.9)`}
-          backgroundColor="rgba(0, 0, 0, 0.95)"
-        >
+          backgroundColor={
+            theme.palette.mode === "light"
+              ? "rgba(255, 255, 255, 0.9)"
+              : "rgba(0, 0, 0, 0.9)"
+          }>
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
             <IconButton
               onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
-              <Close />
+              <Close
+                sx={{
+                  fontSize: "25px",
+                  color:
+                    theme.palette.mode === "light"
+                      ? theme.palette.primary.main
+                      : "",
+                }}
+              />
             </IconButton>
           </Box>
 
@@ -172,10 +182,9 @@ const NavBar = () => {
                 fontSize: "25px",
                 color:
                   theme.palette.mode === "light"
-                    ? theme.palette.primary.dark
+                    ? theme.palette.primary.main
                     : "",
               }}
-              // onClick={() => navigate("/")}
               onClick={() => handleMobileMenuClick("/")}
               cursor="pointer"
             />
@@ -184,10 +193,9 @@ const NavBar = () => {
                 fontSize: "25px",
                 color:
                   theme.palette.mode === "light"
-                    ? theme.palette.primary.dark
+                    ? theme.palette.primary.main
                     : "",
               }}
-              // onClick={() => navigate("/blog")}
               onClick={() => handleMobileMenuClick("/blog")}
               cursor="pointer"
             />
@@ -196,10 +204,9 @@ const NavBar = () => {
                 fontSize: "25px",
                 color:
                   theme.palette.mode === "light"
-                    ? theme.palette.primary.dark
+                    ? theme.palette.primary.main
                     : "",
               }}
-              // onClick={() => navigate("/projects")}
               onClick={() => handleMobileMenuClick("/projects")}
               cursor="pointer"
             />
@@ -208,10 +215,9 @@ const NavBar = () => {
                 fontSize: "25px",
                 color:
                   theme.palette.mode === "light"
-                    ? theme.palette.primary.dark
+                    ? theme.palette.primary.main
                     : "",
               }}
-              // onClick={() => navigate("/contact")}
               onClick={() => handleMobileMenuClick("/contact")}
               cursor="pointer"
             />
@@ -221,7 +227,7 @@ const NavBar = () => {
               ) : (
                 <LightMode
                   sx={{
-                    color: theme.palette.primary.dark,
+                    color: theme.palette.primary.main,
                     fontSize: "25px",
                   }}
                 />

@@ -1,9 +1,11 @@
 import { Box, useMediaQuery, useTheme, Typography, Paper } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import Narnia from "../assets/littleNarnia.jpg";
 import SocialLinks from "../components/socialLinks";
 
 const Landing = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const navbarHeight = 80;
   const nameplateHeight = 276.219;
@@ -64,8 +66,7 @@ const Landing = () => {
               fontSize="clamp(0.8rem, 1rem, 1.5rem)"
               display="flex"
               marginTop="20rem"
-              justifyContent="right"
-            >
+              justifyContent="right">
               Find Me Here:
               <SocialLinks
                 color={theme.palette.primary.main}
@@ -73,7 +74,7 @@ const Landing = () => {
                   "a:hover": {
                     textDecoration: "underline",
                     color: theme.palette.primary.dark,
-                  }
+                  },
                 }}
               />
             </Typography>
@@ -139,31 +140,60 @@ const Landing = () => {
                   color: theme.palette.primary.light,
                 },
               }}>
-              <a
-                href="http://www.github.com/RDCERP/my-stores"
-                style={{
-                  textDecoration: "none",
-                  color: theme.palette.primary.light,
-                }}>
+              <Typography
+                fontSize="1.8rem"
+                fontStyle="italic"
+                sx={{
+                  "&:hover": {
+                    textDecoration: "underline",
+                    color: theme.palette.primary.light,
+                    cursor: "pointer",
+                  },
+                }}
+                onClick={() =>
+                  navigate("http://www.github.com/RDCERP/my-stores")
+                }>
                 MyStores | github.com/RDCERP/my-stores
-              </a>
+              </Typography>
             </Typography>
             <Typography marginBottom="1rem" fontSize="0.9rem">
-              <ol style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
-                <li>
-                  This project is a social media site for those who would want
-                  to share yelp locations both to ask for recommendations, or
-                  share where they've been for others to try.
-                </li>
-                <li>
-                  I provided a lot of the back end, and designed a large portion
-                  of the front end.
-                </li>
-                <li>
-                  We used JavaScript, React, Redux/Toolkit, MaterialUI, MongoDB,
-                  Express, Node, and more.
-                </li>
-              </ol>
+              <Typography marginBottom=".5rem">
+                <Box
+                  display="inline-block"
+                  width="0.33rem"
+                  height="0.33rem"
+                  borderRadius="50%"
+                  backgroundColor="white"
+                  marginRight="0.5rem"
+                />
+                This project is a social media site for those who would want to
+                share yelp locations both to ask for recommendations, or share
+                where they've been for others to try.
+              </Typography>
+              <Typography marginBottom=".5rem">
+                <Box
+                  display="inline-block"
+                  width="0.33rem"
+                  height="0.33rem"
+                  borderRadius="50%"
+                  backgroundColor="white"
+                  marginRight="0.5rem"
+                />
+                I provided a lot of the back end, and designed a large portion
+                of the front end.
+              </Typography>
+              <Typography marginBottom=".5rem">
+                <Box
+                  display="inline-block"
+                  width="0.33rem"
+                  height="0.33rem"
+                  borderRadius="50%"
+                  backgroundColor="white"
+                  marginRight="0.5rem"
+                />
+                We used JavaScript, React, Redux/Toolkit, MaterialUI, MongoDB,
+                Express, Node, and more.
+              </Typography>
             </Typography>
             <Typography
               fontSize="1.8rem"
@@ -172,28 +202,49 @@ const Landing = () => {
                 "&:hover": {
                   textDecoration: "underline",
                   color: theme.palette.primary.light,
+                  cursor: "pointer",
                 },
-              }}>
-              <a
-                href="http://github.com/Steezy1416/round-table"
-                style={{
-                  textDecoration: "none",
-                  color: theme.palette.primary.light,
-                }}>
-                RoundTable | github.com/Steezy1416/round-table
-              </a>
+              }}
+              onClick={() =>
+                navigate("http://github.com/Steezy1416/round-table")
+              }>
+              RoundTable | github.com/Steezy1416/round-table
             </Typography>
             <Typography marginBottom="1rem" fontSize="0.9rem">
-              <ol style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
-                <li>
-                  This project is a chat application utilizing Socket.io.</li>
-                <li>
-                  I provided code for the front end.
-                </li>
-                <li>
-                  We used JavaScript, Handlebars, Socket.io, Session, Sequelizer, and Express
-                </li>
-              </ol>
+              <Typography marginBottom=".5rem">
+                <Box
+                  display="inline-block"
+                  width="0.33rem"
+                  height="0.33rem"
+                  borderRadius="50%"
+                  backgroundColor="white"
+                  marginRight="0.5rem"
+                />
+                This project is a chat application utilizing Socket.io.
+              </Typography>
+              <Typography>
+                <Box
+                  display="inline-block"
+                  width="0.33rem"
+                  height="0.33rem"
+                  borderRadius="50%"
+                  backgroundColor="white"
+                  marginRight="0.5rem"
+                />
+                I provided code for the front end.
+              </Typography>
+              <Typography>
+                <Box
+                  display="inline-block"
+                  width="0.33rem"
+                  height="0.33rem"
+                  borderRadius="50%"
+                  backgroundColor="white"
+                  marginRight="0.5rem"
+                />
+                We used JavaScript, Handlebars, Socket.io, Session, Sequelizer,
+                and Express
+              </Typography>
             </Typography>
           </Paper>
         </Box>
