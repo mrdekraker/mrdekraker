@@ -97,7 +97,7 @@ export default function Blog() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => navigate("/blog")}>
+                    <Button onClick={() => navigate("/post/" + post.slug.current)}>
                       Learn More
                     </Button>
                   </CardActions>
@@ -161,7 +161,7 @@ export default function Blog() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => navigate("/blog")}>
+                    <Button onClick={() => navigate("/post/" + post.slug.current)}>
                       Learn More
                     </Button>
                   </CardActions>
