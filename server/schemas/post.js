@@ -49,6 +49,13 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'snippet',
+      title: 'Snippet',
+      type: 'text',
+      description: 'The first 150 characters of the post',
+      validation: Rule => Rule.max(150),
+    }),
   ],
 
   preview: {

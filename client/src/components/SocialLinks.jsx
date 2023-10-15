@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { GitHub, LinkedIn, Twitter, Instagram } from "@mui/icons-material";
 import FlexBetween from "./FlexBetween";
 
