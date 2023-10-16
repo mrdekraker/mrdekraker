@@ -39,6 +39,7 @@ export default function Blog() {
               }
             },
             body,
+            date,
             "name": author->name,
             "authorImage": author->image
           }`
@@ -48,6 +49,12 @@ export default function Blog() {
   }, [slug]);
 
   if (!postData) return <div>Loading...</div>;
+  
+  const datePublished = new Date(postData.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   if(isNonMobileScreens) {
     return (
@@ -65,48 +72,48 @@ export default function Blog() {
             display: "none",
           },
         }}>
-          {/* BLOG TITLE */}
-          <Box
-            width="80%"
-            margin="2rem auto"
-            padding="2rem"
-            boxShadow={`rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px`}
-            sx={{
-              backgroundImage: `url(${postData.mainImage.asset.url})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}>
-            <Typography
-              fontFamily="League Spartan"
-              fontSize="clamp(4rem, 5rem, 6rem)"
-              color={theme.palette.primary.main}
-              textTransform="uppercase">
-              {postData.title}
-            </Typography>
-          </Box>
+        {/* BLOG TITLE */}
+        <Box
+          width="80%"
+          margin="2rem auto"
+          padding="2rem"
+          boxShadow={`rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px`}
+          sx={{
+            backgroundImage: `url(${postData.mainImage.asset.url})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}>
+          <Typography
+            fontFamily="League Spartan"
+            fontSize="clamp(4rem, 5rem, 6rem)"
+            color={theme.palette.primary.main}
+            textTransform="uppercase">
+            {postData.title}
+          </Typography>
+        </Box>
 
-          {/* BLOG BODY */}
-          <Box>
-            <Typography
-              fontFamily="Libre Baskerville"
-              fontSize="clamp(1rem, 1.8rem, 2rem)"
-              color={theme.palette.primary.main}
-              lineHeight="1"
-              margin="0 auto"
-              width="80%"
-              padding="2rem 0"
-              textAlign="left"
-              sx={{
-                textDecoration: "none",
-              }}
-            >
-              <BlockContent
-                blocks={postData.body}
-                projectId="c8fatw9j"
-                dataset="production"
-              />
-            </Typography>
+        {/* BLOG BODY */}
+        <Box
+          fontFamily="Libre Baskerville"
+          fontSize="clamp(1rem, 1.2rem, 2rem)"
+          color={theme.palette.primary.main}
+          lineHeight="1"
+          width="80%"
+          margin="0 auto"
+          padding="2rem 0"
+          sx={{
+            textDecoration: "none",
+          }}
+        >
+          <Box textAlign="left">
+            <BlockContent
+              blocks={postData.body}
+              projectId="c8fatw9j"
+              dataset="production"
+            />
+          </Box>
+          <Box textAlign="center">
             <Button
               variant="contained"
               onClick={() => navigate(-1)}
@@ -116,11 +123,13 @@ export default function Blog() {
                 "&:hover": {
                   backgroundColor: theme.palette.primary.main,
                 },
-              }}>
+              }}
+            >
               Back to Blog
             </Button>
           </Box>
         </Box>
+      </Box>
     );
   } else {
     return (
@@ -130,15 +139,20 @@ export default function Blog() {
         flexDirection="column"
         alignItems="center"
         padding="2rem"
-        overflowY="scroll">
-        <Box
-          maxHeight={`calc(100vh - ${navbarHeight}px)`}
-        >
+        sx={{
+          overflowY: "scroll",
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}>
+        <Box maxHeight={`calc(100vh - ${navbarHeight}px)`}>
           {/* BLOG TITLE */}
           <Box
-            margin="2rem 0"
+            width="100%"
+            margin="2rem auto"
             padding="2rem"
             boxShadow={`rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px`}
+            textAlign="center"
             sx={{
               backgroundImage: `url(${postData.mainImage.asset.url})`,
               backgroundSize: "cover",
@@ -146,8 +160,9 @@ export default function Blog() {
               backgroundRepeat: "no-repeat",
             }}>
             <Typography
+              padding="1rem"
               fontFamily="League Spartan"
-              fontSize="clamp(4rem, 5rem, 6rem)"
+              fontSize="clamp(2rem, 3rem, 4rem)"
               color={theme.palette.primary.main}
               textTransform="uppercase">
               {postData.title}
@@ -155,36 +170,24 @@ export default function Blog() {
           </Box>
         </Box>
 
+        {/* BLOG BODY */}
         <Box
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          alignItems="center">
-          <Typography
-            fontFamily="Libre Baskerville"
-            fontSize="clamp(1rem, 1.2rem, 2rem)"
-            color={theme.palette.primary.main}
-            lineHeight="1"
-            width="100%"
-            padding="2rem 0">
+          fontFamily="Libre Baskerville"
+          fontSize="clamp(1rem, 1.2rem, 2rem)"
+          color={theme.palette.primary.main}
+          lineHeight="1">
+          <Box textAlign="left">
             <BlockContent
               blocks={postData.body}
               projectId="c8fatw9j"
               dataset="production"
             />
-          </Typography>
-          <Button
-            variant="contained"
-            onClick={() => navigate(-1)}
-            sx={{
-              backgroundColor: theme.palette.primary.dark,
-              color: theme.palette.primary.light,
-              "&:hover": {
-                backgroundColor: theme.palette.primary.main,
-              },
-            }}>
-            Back to Blog
-          </Button>
+          </Box>
+          <Box textAlign="center">
+            <Button variant="contained" onClick={() => navigate(-1)}>
+              Back to Blog
+            </Button>
+          </Box>
         </Box>
       </Box>
     );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   IconButton,
@@ -6,6 +6,7 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
+  FormControl,
 } from "@mui/material";
 import {
   Search,
@@ -21,9 +22,10 @@ import {
 import { useDispatch } from "react-redux";
 import { setMode } from "../state";
 import { useNavigate } from "react-router-dom";
+// import SearchResult from "./SearchResult"
 import FlexBetween from "../components/FlexBetween";
 
-import React from "react";
+// import sanityClient from "../client.js";
 
 const NavBar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
@@ -36,11 +38,40 @@ const NavBar = () => {
   const main = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
 
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [searchResults, setSearchResults] = useState([]);
+
+  // useEffect(() => {
+  //   if (searchQuery) {
+  //     sanityClient
+  //       .fetch(
+  //         `*[_type == "post" && title match "${searchQuery}*" ]{
+  //           title,
+  //           slug,
+  //           mainImage{
+  //             asset->{
+  //               _id,
+  //               url
+  //             }
+  //           },
+  //           body,
+  //           date,
+  //           "name": author->name,
+  //           "authorImage": author->image
+  //         }`
+  //     )
+  //       .then((data) => setSearchResults(data))
+  //       .catch(console.error);
+  //   }
+  // }, [searchQuery]);
+
+
+
   // HANDLE MOBILE MENU TOGGLE
   const handleMobileMenuClick = (path) => {
     setIsMobileMenuToggled(!isMobileMenuToggled);
     navigate(path);
-  }
+  };
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -55,7 +86,8 @@ const NavBar = () => {
               color: main,
               cursor: "pointer",
             },
-          }}>
+          }}
+          onClick={() => navigate("/")}>
           MD
         </Typography>
         {isNonMobileScreens && (
@@ -64,10 +96,26 @@ const NavBar = () => {
             borderRadius="9px"
             gap="3rem"
             padding="0.1rem 1.5rem">
-            <InputBase placeholder="Search Blog..." />
-            <IconButton>
-              <Search />
-            </IconButton>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                // navigate("/searchresult");
+                console.log(`good click`);
+              }}
+              ref={(form) => {
+                if (form) {
+                  form.querySelector("input");
+                }
+              }}>
+              <InputBase
+                placeholder="Search Blog..."
+                // value={searchQuery}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <IconButton type="submit">
+                <Search />
+              </IconButton>
+            </form>
           </FlexBetween>
         )}
       </FlexBetween>
