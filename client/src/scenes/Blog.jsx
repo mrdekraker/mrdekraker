@@ -1,7 +1,6 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, useMediaQuery, useTheme, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-
 import sanityClient from "../client.js";
 import React, { useState, useEffect } from "react";
 
@@ -101,7 +100,7 @@ export default function Blog() {
                       onClick={() => navigate("/blogpost/" + post.slug.current)}
                       key={post.slug.current}
                       >
-                      Learn More
+                      Read More
                     </Button>
                   </CardActions>
                 </Card>
@@ -165,7 +164,7 @@ export default function Blog() {
                   </CardContent>
                   <CardActions>
                     <Button onClick={() => navigate("/blogpost/" + post.slug.current)}>
-                      Learn More
+                      Read More
                     </Button>
                   </CardActions>
                 </Card>

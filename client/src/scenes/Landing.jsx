@@ -1,11 +1,9 @@
 import { Box, useMediaQuery, useTheme, Typography, Paper } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import Narnia from "../assets/littleNarnia.jpg";
 import SocialLinks from "../components/socialLinks";
 
 const Landing = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const navbarHeight = 80;
   const nameplateHeight = 276.219;
@@ -144,10 +142,12 @@ const Landing = () => {
                 "&:hover": {
                   textDecoration: "underline",
                   color: theme.palette.primary.light,
+                  cursor: "pointer",
                 },
               }}
               onClick={() =>
-                navigate("http://www.github.com/RDCERP/my-stores")
+                window.open("http://www.github.com/RDCERP/my-stores", "_blank", "noopener noreferrer")
+                
               }>
               MyStores | github.com/RDCERP/my-stores
             </Typography>
@@ -175,7 +175,7 @@ const Landing = () => {
                 },
               }}
               onClick={() =>
-                navigate("http://github.com/Steezy1416/round-table")
+                window.open("http://github.com/Steezy1416/round-table", "_blank", "noopener noreferrer")
               }>
               RoundTable | github.com/Steezy1416/round-table
             </Typography>
@@ -254,10 +254,7 @@ const Landing = () => {
               justifyContent="center">
               Find Me Here:{" "}
             </Typography>
-            <Box
-              padding="1rem"
-              color={theme.palette.primary.light}
-            >
+            <Box padding="1rem" color={theme.palette.primary.light}>
               <SocialLinks
                 sx={{
                   "a:hover": {
@@ -324,7 +321,11 @@ const Landing = () => {
                 },
               }}
               onClick={() =>
-                navigate("http://www.github.com/RDCERP/my-stores")
+                window.open(
+                  "http://www.github.com/RDCERP/my-stores",
+                  "_blank",
+                  "noopener noreferrer"
+                )
               }>
               MyStores | github.com/RDCERP/my-stores
             </Typography>
@@ -352,7 +353,11 @@ const Landing = () => {
                 },
               }}
               onClick={() =>
-                navigate("http://github.com/Steezy1416/round-table")
+                window.open(
+                  "http://github.com/Steezy1416/round-table",
+                  "_blank",
+                  "noopener noreferrer"
+                )
               }>
               RoundTable | github.com/Steezy1416/round-table
             </Typography>

@@ -50,6 +50,7 @@ export default function Blog() {
 
   if (!postData) return <div>Loading...</div>;
   
+  // TODO: ADD DATE PUBLISHED TO BLOG POSTS
   const datePublished = new Date(postData.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
