@@ -6,6 +6,7 @@ import Contact from "./scenes/Contact";
 import Landing from "./scenes/Landing";
 import Projects from "./scenes/Projects";
 import NavBar from "./scenes/NavBar";
+import Search from "./scenes/Search";
 
 import { useMemo } from "react";
 import {  useSelector } from "react-redux";
@@ -35,6 +36,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/blogpost/:slug" element={<BlogPost />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
