@@ -12,10 +12,13 @@ import {
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 
+import sanityClient from "../client.js";
+
 // Assuming searchResults is an array of search results
 const searchResults = [
   // Your search results data here
 ];
+
 
 export default function Search() {
   const theme = useTheme();
@@ -24,14 +27,48 @@ export default function Search() {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const navbarHeight = 80;
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
+  // Use the query parameter from the URL to set the search query
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const query = params.get("q");
     setSearchQuery(query || "");
   }, [location.search]);
 
-  console.log("Search.jsx searchQuery:", searchQuery);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // Perform a query to fetch search results
+        const results = await sanityClient.fetch(
+          `*[_type == "post" && title match $query]{
+          title,
+          slug,
+          mainImage{
+            asset->{
+              _id,
+              url
+            }
+          },
+          body,
+          date,
+          "name": author->name,
+          "authorImage": author->image
+        }`,
+          { query: searchQuery }
+        );
+
+        // Update search results state
+        setSearchResults(results);
+      } catch (error) {
+        console.error("Error fetching and processing search results:", error);
+      }
+    };
+
+    if (searchQuery) {
+      fetchPosts();
+    }
+  }, [searchQuery]);
 
 
   return (
