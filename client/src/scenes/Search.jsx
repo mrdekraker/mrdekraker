@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   Box,
+  Button,
   Card,
   CardActions,
   CardContent,
@@ -13,12 +14,6 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 
 import sanityClient from "../client.js";
-
-// Assuming searchResults is an array of search results
-const searchResults = [
-  // Your search results data here
-];
-
 
 export default function Search() {
   const theme = useTheme();
@@ -70,8 +65,10 @@ export default function Search() {
     }
   }, [searchQuery]);
 
+  if (!searchQuery) return <div>Loading...</div>;
 
   return (
+    // TODO: MAKE IT PRETTY
     <Box
       border="2px solid red"
       display="flex"
@@ -81,20 +78,26 @@ export default function Search() {
       padding="2rem">
       <Typography>Search results for "{searchQuery}"</Typography>
       {searchResults.map((result, index) => (
-        // Render each search result here as Card components
-        <Card key={index}>
+        <Card
+          key={index}
+          onClick={() => navigate("/blogpost/" + result.slug.current)}>
           <CardMedia
             component="img"
-            alt={result.alt}
             height="140"
-            image={result.imageURL}
+            image={result.mainImage.asset.url}
+            alt={result.mainImage.asset.alt}
           />
           <CardContent>
             <Typography variant="body2" color="textSecondary">
               {result.title}
             </Typography>
           </CardContent>
-          <CardActions>{/* Add actions or links here if needed */}</CardActions>
+          <CardActions>
+            <Button
+              onClick={() => navigate("/blogpost/" + result.slug.current)}>
+              Read More
+            </Button>
+          </CardActions>
         </Card>
       ))}
     </Box>
