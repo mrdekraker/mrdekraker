@@ -7,7 +7,6 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  useMediaQuery,
   useTheme,
   Typography,
 } from "@mui/material";
@@ -19,8 +18,6 @@ export default function Search() {
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
-  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const navbarHeight = 80;
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 

@@ -51,7 +51,7 @@ export default function Blog() {
     month: "long",
     year: "numeric",
   });
-
+  
   if(isNonMobileScreens) {
     return (
       // NONMOBILE PARENT BOX
@@ -90,7 +90,9 @@ export default function Blog() {
 
         {/* DATE & AUTHOR */}
         <Box>
-          <Typography>{datePublished} | Author: {postData.name} </Typography>
+          <Typography>
+            {datePublished} | Author: {postData.name}{" "}
+          </Typography>
         </Box>
 
         {/* BLOG BODY */}
@@ -101,12 +103,22 @@ export default function Blog() {
           lineHeight="1"
           width="80%"
           margin="0 auto"
-          padding="2rem 0"
-          sx={{
-            textDecoration: "none",
-          }}
-        >
-          <Box textAlign="left">
+          padding="2rem 0">
+          <Box
+            textAlign="left"
+            border={
+              theme.palette.mode === "light"
+                ? "1px solid black"
+                : "1px solid white"
+            }
+            padding="1rem"
+            marginBottom="1rem"
+            sx={{
+              "& a": {
+                color: theme.palette.neutral.main,
+              },
+            }}
+          >
             <BlockContent
               blocks={postData.body}
               projectId="c8fatw9j"
@@ -123,8 +135,7 @@ export default function Blog() {
                 "&:hover": {
                   backgroundColor: theme.palette.primary.main,
                 },
-              }}
-            >
+              }}>
               Back to Blog
             </Button>
           </Box>
