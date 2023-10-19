@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
-  // Card,
-  // CardActions,
-  // CardContent,
-  // CardMedia,
-  // Grid,
   useMediaQuery,
   useTheme,
   Typography,
@@ -39,7 +34,7 @@ export default function Blog() {
               }
             },
             body,
-            date,
+            publishedAt,
             "name": author->name,
             "authorImage": author->image
           }`
@@ -48,20 +43,19 @@ export default function Blog() {
       .catch(console.error);
   }, [slug]);
 
+
   if (!postData) return <div>Loading...</div>;
   
-  // TODO: ADD DATE PUBLISHED TO BLOG POSTS
-  const datePublished = new Date(postData.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
+  const datePublished = new Date(postData.publishedAt).toLocaleDateString("en-US", {
     day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 
   if(isNonMobileScreens) {
     return (
       // NONMOBILE PARENT BOX
       <Box
-        // border="2px solid red"
         padding="1rem"
         display="flex"
         flexDirection="column"
@@ -92,6 +86,11 @@ export default function Blog() {
             textTransform="uppercase">
             {postData.title}
           </Typography>
+        </Box>
+
+        {/* DATE & AUTHOR */}
+        <Box>
+          <Typography>{datePublished} | Author: {postData.name} </Typography>
         </Box>
 
         {/* BLOG BODY */}

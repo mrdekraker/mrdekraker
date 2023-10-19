@@ -65,6 +65,7 @@ export default function Blog() {
           container
           spacing={2}
           rowSpacing={1}
+          justifyContent="center"
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {postData &&
             postData.map((post, index) => (
