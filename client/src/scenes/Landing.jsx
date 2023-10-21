@@ -70,8 +70,7 @@ const Landing = () => {
             <Box
               color={theme.palette.primary.light}
               width="25%"
-              marginLeft="auto"
-            >
+              marginLeft="auto">
               <SocialLinks
                 sx={{
                   "a:hover": {
@@ -127,10 +126,7 @@ const Landing = () => {
               Relevant Project Experience
             </Typography>
             <Typography marginBottom="1rem" fontSize="0.9rem">
-              My experience is largely educational and various educational
-              projects. I am trained in the MERN Full Stack. I have experience
-              with React, Node, Express, MongoDB, MySQL, and more. I am also
-              familiar with the MUI, Tailwind, & Bootstrap frameworks.
+              My experience is largely educational, complimented by educational and personal interests projects. I am well-versed in the MERN Full Stack, encompassing proficiency in technologies such as React, Node, Express, MongoDB, MySQL, and others. Additionally, I have a working knowledge of popular frameworks like MUI, Tailwind, and Bootstrap.
             </Typography>
             <Typography marginBottom="1rem" fontSize="0.9rem">
               To view all my projects, please visit my projects page.
@@ -146,8 +142,11 @@ const Landing = () => {
                 },
               }}
               onClick={() =>
-                window.open("http://www.github.com/RDCERP/my-stores", "_blank", "noopener noreferrer")
-                
+                window.open(
+                  "http://www.github.com/RDCERP/my-stores",
+                  "_blank",
+                  "noopener noreferrer"
+                )
               }>
               MyStores | github.com/RDCERP/my-stores
             </Typography>
@@ -175,7 +174,11 @@ const Landing = () => {
                 },
               }}
               onClick={() =>
-                window.open("http://github.com/Steezy1416/round-table", "_blank", "noopener noreferrer")
+                window.open(
+                  "http://github.com/Steezy1416/round-table",
+                  "_blank",
+                  "noopener noreferrer"
+                )
               }>
               RoundTable | github.com/Steezy1416/round-table
             </Typography>

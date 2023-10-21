@@ -7,7 +7,6 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  useTheme,
   Typography,
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -15,7 +14,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import sanityClient from "../client.js";
 
 export default function Search() {
-  const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
