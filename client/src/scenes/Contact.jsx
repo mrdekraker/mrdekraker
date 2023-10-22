@@ -1,22 +1,25 @@
-import { Formik } from "formik";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ContactForm from "../scenes/ContactForm";
+
+// import mdek from "../assets/mDek.jpeg";
 
 const Contact = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const theme = useTheme();
 
+  if (isNonMobileScreens) {
   return (
+    // NONMOBILE PARENT BOX
     <Box
-      border="2px solid red"
       width="100%"
       padding="2rem 6%"
-      display="flex" // Always display flex to align items side by side
-      flexDirection={isNonMobileScreens ? "row" : "column"} // Stack on small screens
-      alignItems="center" // Vertically center items
-      gap="0.5rem"
-    >
-      <Box>
+      display="flex"
+      flexDirection={isNonMobileScreens ? "row" : "column"}
+      alignItems="center"
+      justifyContent="center" // Center horizontally
+      gap="0.5rem">
+      {/* LEFT BOX */}
+      <Box border="2px solid red">
         <Typography
           fontSize="clamp(1.5rem, 2.25rem, 3rem)"
           color={theme.palette.primary.dark}>
@@ -27,10 +30,49 @@ const Contact = () => {
           color={theme.palette.primary.main}>
           TO GET STARTED!
         </Typography>
+
       </Box>
-      <h1>Import Form here</h1>
+
+      {/* RIGHT BOX */}
+      <Box border="2px solid blue">
+        <ContactForm />
+      </Box>
     </Box>
   );
-};
+  } else {
+    return (
+      // MOBILE PARENT BOX
+      <Box
+        // border="2px solid red"
+        width="100%"
+        padding="2rem 6%"
+        display="flex" // Always display flex to align items side by side
+        flexDirection={isNonMobileScreens ? "row" : "column"} // Stack on small screens
+        alignItems="center" // Vertically center items
+        gap="0.5rem">
+        <Box>
+          <Typography
+            fontSize="clamp(1.5rem, 2.25rem, 3rem)"
+            color={theme.palette.primary.dark}>
+            CONTACT ME
+          </Typography>
+          <Typography
+            fontSize="clamp(1.5rem, 2.25rem, 3rem)"
+            color={theme.palette.primary.main}>
+            TO GET STARTED!
+          </Typography>
+          <Box
+            // width="100%"
+            // height="100%"
+            border="2px solid orange">
+            this is the image
+            {/* <img src={mdek} alt="mdek" /> */}
+          </Box>
+        </Box>
+        {/* <ContactForm /> */}
+      </Box>
+    );
+  }
+}
 
 export default Contact;

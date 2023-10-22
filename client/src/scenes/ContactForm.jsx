@@ -1,74 +1,76 @@
-import { useState } from "react";
-import {
-  Box,
-  Button,
-  TextField,
-  useMediaQuery,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { Formik } from "formik";
-import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import FlexBetween from "../components/FlexBetween";
+import React, { useState } from "react";
+import { Container, TextField, Button, Typography, Grid } from "@mui/material";
 
-const ContactForm = () => {
+function MessageIntakeForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log(formData);
+  };
 
   return (
-
-<Formik
-  initialValues={{ email: "", password: "" }}
-  validate={(values) => {
-    const errors = {};
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Invalid email address";
-    }
-    return errors;
-  }}
-  onSubmit={(values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
-  }}>
-  {({
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    isSubmitting,
-    /* and other goodies */
-  }) => (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        name="email"
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={values.email}
-      />
-      {errors.email && touched.email && errors.email}
-      <input
-        type="password"
-        name="password"
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={values.password}
-      />
-      {errors.password && touched.password && errors.password}
-      <button type="submit" disabled={isSubmitting}>
-        Submit
-      </button>
-    </form>
-  )}
-</Formik>
+    <Container maxWidth="sm">
+      <Typography variant="h4" gutterBottom>
+        Contact Us
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Message"
+              name="message"
+              multiline
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" color="primary" type="submit">
+              Submit
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
   );
-};
+}
 
-export default ContactForm;
+export default MessageIntakeForm;
