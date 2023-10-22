@@ -31,7 +31,6 @@ export default function Blog() {
       )
       .then((data) => {
         setPost(data)
-        console.log(data)
       })
       .catch(console.error);
   }, []);
@@ -42,7 +41,6 @@ export default function Blog() {
       <Box
         display="flex"
         flexDirection="column"
-        // justifyContent="center"
         alignItems="center"
         height={`calc(100vh - ${navbarHeight}px)`}
         padding="2rem">
@@ -116,11 +114,17 @@ export default function Blog() {
       <Box
         display="flex"
         flexDirection="column"
-        // justifyContent="center"
+        justifyContent="center"
         alignItems="center"
         height={`calc(100vh - ${navbarHeight}px)`}
         padding="2rem"
-        textAlign="center">
+        textAlign="center"
+        sx={{
+          "@media (max-width: 600px)": {
+            justifyContent: "flex-start",
+          },
+        }}
+      >
         <Typography
           fontFamily="League Spartan"
           fontSize="clamp(2rem, 3.5rem, 4rem)"
@@ -135,12 +139,19 @@ export default function Blog() {
           color={theme.palette.primary.main}>
           Tech & Lifestyle Blog
         </Typography>
-
         {/* GRID FOR BLOG POSTS */}
         <Grid container spacing={2}>
           {postData &&
             postData.map((post, index) => (
-              <Grid item xs={12} key={post.slug.current}>
+              <Grid
+                item
+                xs={12}
+                key={post.slug.current}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}>
                 <Card
                   sx={{
                     maxWidth: 345,
@@ -164,7 +175,10 @@ export default function Blog() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => navigate("/blogpost/" + post.slug.current)}>
+                    <Button
+                      onClick={() =>
+                        navigate("/blogpost/" + post.slug.current)
+                      }>
                       Read More
                     </Button>
                   </CardActions>

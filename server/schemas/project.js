@@ -52,6 +52,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'giturl',
+      title: 'gitURL',
+      type: 'url',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -59,6 +65,12 @@ export default defineType({
       options: {
         layout: 'tags',
       },
+    }),
+    defineField({
+      name: 'relatedPost',
+      title: 'Related Post',
+      type: 'reference',
+      to: [{type: 'post'}], // Reference the "Post" type
     }),
   ],
 })

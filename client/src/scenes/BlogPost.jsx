@@ -79,13 +79,19 @@ export default function Blog() {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}>
-          <Typography
-            fontFamily="League Spartan"
-            fontSize="clamp(4rem, 5rem, 6rem)"
-            color={theme.palette.primary.main}
-            textTransform="uppercase">
-            {postData.title}
-          </Typography>
+          <Box
+            border={`1px solid ${theme.palette.primary.light}`}
+            backgroundColor="rgba(0,0,0,0.5)"
+            zIndex="1">
+            <Typography
+              zIndex="2"
+              fontFamily="League Spartan"
+              fontSize="clamp(4rem, 5rem, 6rem)"
+              color={theme.palette.primary.light}
+              textTransform="uppercase">
+              {postData.title}
+            </Typography>
+          </Box>
         </Box>
 
         {/* DATE & AUTHOR */}
@@ -117,8 +123,7 @@ export default function Blog() {
               "& a": {
                 color: theme.palette.neutral.main,
               },
-            }}
-          >
+            }}>
             <BlockContent
               blocks={postData.body}
               projectId="c8fatw9j"
@@ -136,7 +141,7 @@ export default function Blog() {
                   backgroundColor: theme.palette.primary.main,
                 },
               }}>
-              Back to Blog
+              Go Back
             </Button>
           </Box>
         </Box>
@@ -159,6 +164,32 @@ export default function Blog() {
         <Box maxHeight={`calc(100vh - ${navbarHeight}px)`}>
           {/* BLOG TITLE */}
           <Box
+            width="100vw"
+            margin="2rem auto"
+            padding="2rem"
+            boxShadow={`rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px`}
+            textAlign="center"
+            sx={{
+              backgroundImage: `url(${postData.mainImage.asset.url})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}>
+            <Box
+              border={`1px solid ${theme.palette.primary.light}`}
+              backgroundColor="rgba(0,0,0,0.5)"
+              zIndex="1">
+              <Typography
+                zIndex="2"
+                fontFamily="League Spartan"
+                fontSize="clamp(2rem, 3rem, 4rem)"
+                color={theme.palette.primary.light}
+                textTransform="uppercase">
+                {postData.title}
+              </Typography>
+            </Box>
+          </Box>
+          {/* <Box
             width="100%"
             margin="2rem auto"
             padding="2rem"
@@ -178,7 +209,7 @@ export default function Blog() {
               textTransform="uppercase">
               {postData.title}
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* BLOG BODY */}
@@ -196,7 +227,7 @@ export default function Blog() {
           </Box>
           <Box textAlign="center">
             <Button variant="contained" onClick={() => navigate(-1)}>
-              Back to Blog
+              Go Back
             </Button>
           </Box>
         </Box>
