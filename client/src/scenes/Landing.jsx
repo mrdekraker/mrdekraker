@@ -1,6 +1,6 @@
 import { Box, useMediaQuery, useTheme, Typography, Paper } from "@mui/material";
 import Narnia from "../assets/littleNarnia.jpg";
-import SocialLinks from "../components/socialLinks";
+import SocialLinks from "../components/SocialLinks";
 
 const Landing = () => {
   const theme = useTheme();
