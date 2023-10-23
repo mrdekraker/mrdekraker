@@ -1,5 +1,5 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import ContactForm from "../scenes/ContactForm";
+import ContactForm from "./ContactForm";
 
 import mdek from "../assets/mDek.jpeg";
 
