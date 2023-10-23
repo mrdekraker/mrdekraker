@@ -1,3 +1,5 @@
 {
-  "rewrites": [{ "source": "/((?!api/.*).*)", "destination": "/" }]
+  "version": 2,
+  "builds": [{ "src": "public/package.json", "use": "@vercel/static-build" }],
+  "routes": [{ "src": "/(.*)", "dest": "/public/index.html" }]
 }
