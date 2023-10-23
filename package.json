@@ -5,10 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run dev\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
+    "develop": "concurrently \"cd server && npm run dev\" \"cd public && npm start\"",
+    "install": "cd server && npm i && cd ../public && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "cd public && npm run build"
   },
   "keywords": [],
   "author": "",
