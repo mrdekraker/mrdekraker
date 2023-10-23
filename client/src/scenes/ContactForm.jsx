@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Grid } from "@mui/material";
 
-function MessageIntakeForm() {
+
+export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,24 +17,26 @@ function MessageIntakeForm() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    console.log(formData);
-  };
-
   return (
     <Container maxWidth="sm">
       <Typography variant="h4" gutterBottom>
-        Contact Us
+        Contact Me!
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <form
+        target="_blank"
+        action={`https://formsubmit.co/mrdekraker@gmail.com`}
+        method="POST"
+        // onSubmit={handleSubmit}
+      >
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
+              fontStyle="italic"
               fullWidth
               label="Name"
               name="name"
+              type="text"
+              autoComplete="name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -41,10 +44,12 @@ function MessageIntakeForm() {
           </Grid>
           <Grid item xs={12}>
             <TextField
+              fontStyle="italic"
               fullWidth
               label="Email"
               name="email"
               type="email"
+              autoComplete="email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -52,9 +57,12 @@ function MessageIntakeForm() {
           </Grid>
           <Grid item xs={12}>
             <TextField
+              fontStyle="italic"
               fullWidth
               label="Message"
               name="message"
+              type="text"
+              autoComplete="off"
               multiline
               rows={4}
               value={formData.message}
@@ -72,5 +80,3 @@ function MessageIntakeForm() {
     </Container>
   );
 }
-
-export default MessageIntakeForm;

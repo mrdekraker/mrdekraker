@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ContactForm from "../scenes/ContactForm";
 
-// import mdek from "../assets/mDek.jpeg";
+import mdek from "../assets/mDek.jpeg";
 
 const Contact = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
@@ -19,22 +19,32 @@ const Contact = () => {
       justifyContent="center" // Center horizontally
       gap="0.5rem">
       {/* LEFT BOX */}
-      <Box border="2px solid red">
+      <Box
+        flex="1"
+        display="flex" // To enable flex properties
+        flexDirection="column" // To stack the content vertically
+        justifyContent="flex-end" // Right-justify the content vertically
+        alignItems="flex-end" // Right-justify the content horizontally
+      >
         <Typography
           fontSize="clamp(1.5rem, 2.25rem, 3rem)"
-          color={theme.palette.primary.dark}>
+          color={theme.palette.primary.dark}
+          textAlign="right" // Right-align the text
+        >
           CONTACT ME
         </Typography>
         <Typography
           fontSize="clamp(1.5rem, 2.25rem, 3rem)"
-          color={theme.palette.primary.main}>
+          color={theme.palette.primary.main}
+          textAlign="right" // Right-align the text
+        >
           TO GET STARTED!
         </Typography>
-
+        <img src={mdek} alt="mdek" width="75%" />
       </Box>
 
       {/* RIGHT BOX */}
-      <Box border="2px solid blue">
+      <Box flex="1">
         <ContactForm />
       </Box>
     </Box>
@@ -61,15 +71,8 @@ const Contact = () => {
             color={theme.palette.primary.main}>
             TO GET STARTED!
           </Typography>
-          <Box
-            // width="100%"
-            // height="100%"
-            border="2px solid orange">
-            this is the image
-            {/* <img src={mdek} alt="mdek" /> */}
-          </Box>
         </Box>
-        {/* <ContactForm /> */}
+        <ContactForm />
       </Box>
     );
   }

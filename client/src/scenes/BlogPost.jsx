@@ -107,7 +107,7 @@ export default function Blog() {
           fontSize="clamp(1rem, 1.2rem, 2rem)"
           color={theme.palette.primary.main}
           lineHeight="1"
-          width="80%"
+          width="70%"
           margin="0 auto"
           padding="2rem 0">
           <Box
@@ -117,7 +117,7 @@ export default function Blog() {
                 ? "1px solid black"
                 : "1px solid white"
             }
-            padding="1rem"
+            padding="5rem"
             marginBottom="1rem"
             sx={{
               "& a": {
@@ -189,27 +189,6 @@ export default function Blog() {
               </Typography>
             </Box>
           </Box>
-          {/* <Box
-            width="100%"
-            margin="2rem auto"
-            padding="2rem"
-            boxShadow={`rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px`}
-            textAlign="center"
-            sx={{
-              backgroundImage: `url(${postData.mainImage.asset.url})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}>
-            <Typography
-              padding="1rem"
-              fontFamily="League Spartan"
-              fontSize="clamp(2rem, 3rem, 4rem)"
-              color={theme.palette.primary.main}
-              textTransform="uppercase">
-              {postData.title}
-            </Typography>
-          </Box> */}
         </Box>
 
         {/* BLOG BODY */}

@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./scenes/About";
 import Blog from "./scenes/Blog";
 import BlogPost from "./scenes/BlogPost";
 import Contact from "./scenes/Contact";
@@ -29,17 +28,16 @@ function App() {
             boxShadow={mode === "light" ? shadow : "none"}
             overflow="hidden"
           >
-              <NavBar />
-            </Box>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blogpost/:slug" element={<BlogPost />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
+            <NavBar />
+          </Box>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/blogpost/:slug" element={<BlogPost />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
         </ThemeProvider>
       </BrowserRouter>
     </div>
