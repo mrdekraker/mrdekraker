@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f18f04a7.css",
+    "main.js": "/static/js/main.c5c63e57.js",
+    "static/js/726.d041946c.chunk.js": "/static/js/726.d041946c.chunk.js",
+    "static/media/littleNarnia.jpg": "/static/media/littleNarnia.95b6f15bc1c1bd5758df.jpg",
+    "static/media/mDek.jpeg": "/static/media/mDek.b8bb1724299c453c6d48.jpeg",
+    "index.html": "/index.html",
+    "main.f18f04a7.css.map": "/static/css/main.f18f04a7.css.map",
+    "main.c5c63e57.js.map": "/static/js/main.c5c63e57.js.map",
+    "726.d041946c.chunk.js.map": "/static/js/726.d041946c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f18f04a7.css",
+    "static/js/main.c5c63e57.js"
+  ]
+}
