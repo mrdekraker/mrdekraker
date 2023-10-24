@@ -123,6 +123,12 @@ export default function Blog() {
               "& a": {
                 color: theme.palette.neutral.main,
               },
+              "& img": {
+                display: "block",
+                margin: "0 auto",
+                maxWidth: "65%",
+                height: "auto",
+              },
             }}>
             <BlockContent
               blocks={postData.body}
