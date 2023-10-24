@@ -9,14 +9,21 @@ const Landing = () => {
   const navbarHeight = 80;
   const nameplateHeight = 276.219;
 
-  const [isMobileNavbarVisible, setMobileNavbarVisible] = useState(true);
+  const [navbarVisible, setNavbarVisible] = useState(true);
 
   // Function to handle the scroll event and hide/show the navbar
   const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setMobileNavbarVisible(false);
-    } else {
-      setMobileNavbarVisible(true);
+    const currentScrollPos = window.pageYOffset;
+    if (currentScrollPos > 0 && navbarVisible) {
+      setNavbarVisible(false);
+    } else if (currentScrollPos === 0 && !navbarVisible) {
+      setNavbarVisible(true);
+    }
+    if (currentScrollPos > navbarHeight) {
+      window.scrollTo({
+        top: navbarHeight,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -151,67 +158,6 @@ const Landing = () => {
             <Typography marginBottom="1rem" fontSize="0.9rem">
               To view all my projects, please visit my projects page.
             </Typography>
-            <Typography
-              fontSize="1.8rem"
-              fontStyle="italic"
-              sx={{
-                "&:hover": {
-                  textDecoration: "underline",
-                  color: theme.palette.primary.light,
-                  cursor: "pointer",
-                },
-              }}
-              onClick={() =>
-                window.open(
-                  "http://www.github.com/RDCERP/my-stores",
-                  "_blank",
-                  "noopener noreferrer"
-                )
-              }>
-              MyStores | github.com/RDCERP/my-stores
-            </Typography>
-            <Typography marginBottom=".5rem">
-              This project is a social media site for those who would want to
-              share yelp locations both to ask for recommendations, or share
-              where they've been for others to try.
-            </Typography>
-            <Typography marginBottom=".5rem">
-              I provided a lot of the back end, and designed a large portion of
-              the front end.
-            </Typography>
-            <Typography marginBottom=".5rem">
-              We used JavaScript, React, Redux/Toolkit, MaterialUI, MongoDB,
-              Express, Node, and more.
-            </Typography>
-            <Typography
-              fontSize="1.8rem"
-              fontStyle="italic"
-              sx={{
-                "&:hover": {
-                  textDecoration: "underline",
-                  color: theme.palette.primary.light,
-                  cursor: "pointer",
-                },
-              }}
-              onClick={() =>
-                window.open(
-                  "http://github.com/Steezy1416/round-table",
-                  "_blank",
-                  "noopener noreferrer"
-                )
-              }>
-              RoundTable | github.com/Steezy1416/round-table
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              This project is a chat application utilizing Socket.io.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              I provided code for the front end.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              We used JavaScript, Handlebars, Socket.io, Session, Sequelizer,
-              and Express
-            </Typography>
           </Paper>
         </Box>
       </Box>
@@ -228,7 +174,7 @@ const Landing = () => {
           backgroundImage: `url(${Narnia})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: `calc(100vh - ${isMobileNavbarVisible ? navbarHeight : 0}px)`,
+          height: `calc(100vh - ${navbarVisible ? navbarHeight : 0}px)`,
         }}>
         {/* Mobile Box */}
         <Box width="100%" height="100%">
@@ -236,7 +182,6 @@ const Landing = () => {
             padding="1.5rem 0"
             backgroundColor="rgba(0,0,0,0.4)"
             // border="1px solid red"
-            // height="25%"
           >
             <Typography
               fontFamily="League Spartan"
@@ -290,13 +235,16 @@ const Landing = () => {
             </Box>
           </Box>
 
+          
           <Paper
             square
             elevation={12}
             sx={{
               padding: "1rem",
               color: theme.palette.primary.light,
-              maxHeight: `calc(100vh - ${navbarHeight}px - ${nameplateHeight}px)`,
+              maxHeight: `calc(100vh - ${
+                navbarVisible ? navbarHeight : 0
+              }px - ${nameplateHeight}px)`,
               overflowY: "scroll",
               backgroundColor: "rgba(0,0,0,0.8)",
               WebkitOverflowScrolling: "touch",
@@ -331,68 +279,8 @@ const Landing = () => {
               with React, Node, Express, MongoDB, MySQL, and more. I am also
               familiar with the MUI, Tailwind, & Bootstrap frameworks.
             </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
+            <Typography marginBottom="3.5rem" fontSize="0.9rem">
               To view all my projects, please visit my projects page.
-            </Typography>
-            <Typography
-              fontSize="1.8rem"
-              fontStyle="italic"
-              sx={{
-                "&:hover": {
-                  textDecoration: "underline",
-                  color: theme.palette.primary.light,
-                },
-              }}
-              onClick={() =>
-                window.open(
-                  "http://www.github.com/RDCERP/my-stores",
-                  "_blank",
-                  "noopener noreferrer"
-                )
-              }>
-              MyStores | github.com/RDCERP/my-stores
-            </Typography>
-            <Typography marginBottom=".5rem">
-              This project is a social media site for those who would want to
-              share yelp locations both to ask for recommendations, or share
-              where they've been for others to try.
-            </Typography>
-            <Typography marginBottom=".5rem">
-              I provided a lot of the back end, and designed a large portion of
-              the front end.
-            </Typography>
-            <Typography marginBottom=".5rem">
-              We used JavaScript, React, Redux/Toolkit, MaterialUI, MongoDB,
-              Express, Node, and more.
-            </Typography>
-            <Typography
-              fontSize="1.8rem"
-              fontStyle="italic"
-              sx={{
-                "&:hover": {
-                  textDecoration: "underline",
-                  color: theme.palette.primary.light,
-                  cursor: "pointer",
-                },
-              }}
-              onClick={() =>
-                window.open(
-                  "http://github.com/Steezy1416/round-table",
-                  "_blank",
-                  "noopener noreferrer"
-                )
-              }>
-              RoundTable | github.com/Steezy1416/round-table
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              This project is a chat application utilizing Socket.io.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              I provided code for the front end.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              We used JavaScript, Handlebars, Socket.io, Session, Sequelizer,
-              and Express
             </Typography>
           </Paper>
         </Box>
