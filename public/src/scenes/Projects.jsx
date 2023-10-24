@@ -241,18 +241,16 @@ export default function Projects() {
                       }>
                       Github
                     </Button>
-                    <Button
-                      onClick={() => {
-                        if (project.relatedPost && project.relatedPost.slug) {
+                    {project.relatedPost && project.relatedPost.slug && (
+                      <Button
+                        onClick={() => {
                           navigate(
                             `/blogpost/${project.relatedPost.slug.current}`
                           );
-                        } else {
-                          console.error("Related Post or slug is missing.");
-                        }
-                      }}>
-                      Blog Post
-                    </Button>
+                        }}>
+                        Blog Post
+                      </Button>
+                    )}
                   </CardActions>
                 </Card>
               </Grid>
