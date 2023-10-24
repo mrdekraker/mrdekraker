@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Box, useMediaQuery, useTheme, Typography, Paper } from "@mui/material";
 import Narnia from "../assets/littleNarnia.jpg";
 import SocialLinks from "../components/SocialLinks";
@@ -6,34 +5,10 @@ import SocialLinks from "../components/SocialLinks";
 const Landing = () => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const navbarHeight = 80;
-  const nameplateHeight = 276.219;
+  const navbarHeight = "80px";
+  const nameplateHeight = "276.219px";
 
-  const [navbarVisible, setNavbarVisible] = useState(true);
 
-  // Function to handle the scroll event and hide/show the navbar
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    if (currentScrollPos > 0 && navbarVisible) {
-      setNavbarVisible(false);
-    } else if (currentScrollPos === 0 && !navbarVisible) {
-      setNavbarVisible(true);
-    }
-    if (currentScrollPos > navbarHeight) {
-      window.scrollTo({
-        top: navbarHeight,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  // Attach the scroll event listener
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   if (isNonMobileScreens) {
     // NONMOBILE PARENT BOX
@@ -174,14 +149,12 @@ const Landing = () => {
           backgroundImage: `url(${Narnia})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: `calc(100vh - ${navbarVisible ? navbarHeight : 0}px)`,
         }}>
         {/* Mobile Box */}
         <Box width="100%" height="100%">
           <Box
             padding="1.5rem 0"
             backgroundColor="rgba(0,0,0,0.4)"
-            // border="1px solid red"
           >
             <Typography
               fontFamily="League Spartan"
@@ -235,21 +208,20 @@ const Landing = () => {
             </Box>
           </Box>
 
-          
           <Paper
             square
             elevation={12}
             sx={{
               padding: "1rem",
               color: theme.palette.primary.light,
-              maxHeight: `calc(100vh - ${
-                navbarVisible ? navbarHeight : 0
-              }px - ${nameplateHeight}px)`,
+              maxHeight: `calc(100vh - ${navbarHeight} - ${nameplateHeight})`,
               overflowY: "scroll",
               backgroundColor: "rgba(0,0,0,0.8)",
-              WebkitOverflowScrolling: "touch",
-              scrollBehavior: "smooth",
-            }}>
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+            }}
+            >
             <Typography fontSize="1.8rem" fontStyle="italic">
               About
             </Typography>
@@ -279,7 +251,7 @@ const Landing = () => {
               with React, Node, Express, MongoDB, MySQL, and more. I am also
               familiar with the MUI, Tailwind, & Bootstrap frameworks.
             </Typography>
-            <Typography marginBottom="3.5rem" fontSize="0.9rem">
+            <Typography marginBottom="1rem" fontSize="0.9rem">
               To view all my projects, please visit my projects page.
             </Typography>
           </Paper>
