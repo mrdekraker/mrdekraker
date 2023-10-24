@@ -62,6 +62,7 @@ const NavBar = () => {
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       {/* MD & Search */}
       <FlexBetween gap="1.75rem">
+        <a href="/" style={{ textDecoration: "none" }}>
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
@@ -72,9 +73,11 @@ const NavBar = () => {
               cursor: "pointer",
             },
           }}
-          onClick={() => navigate("/")}>
+          
+        >
           MD
-        </Typography>
+          </Typography>
+        </a>
         {isNonMobileScreens && (
           <FlexBetween
             backgroundColor={neutralLight}
