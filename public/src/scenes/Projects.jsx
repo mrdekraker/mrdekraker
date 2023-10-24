@@ -84,7 +84,9 @@ export default function Projects() {
                 <Card
                   sx={{
                     maxWidth: 345,
-                    minHeight: 345,
+                    display: "flex",
+                    flexDirection: "column",
+                    height: 365,
                     boxShadow:
                       "rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
                   }}
@@ -95,7 +97,9 @@ export default function Projects() {
                     image={project.image.asset.url}
                     alt={project.image.alt}
                   />
-                  <CardContent>
+                  <CardContent style={{ flex: 1 }}>
+                    {" "}
+                    {/* Allow content to expand and take remaining space */}
                     <Typography gutterBottom variant="h5" component="div">
                       {project.title}
                     </Typography>
@@ -109,7 +113,7 @@ export default function Projects() {
                       {project.description}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{ marginTop: "auto" }}>
+                  <CardActions>
                     <Button
                       onClick={() =>
                         window.open(
