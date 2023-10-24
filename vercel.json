@@ -10,7 +10,7 @@
   "routes": [
     {
       "src": "/api/sanity",
-      "dest": "https://your-sanity-project-id.api.sanity.io/v1/graphql/your-dataset",
+      "dest": "https://c8fatw9j.api.sanity.io/v1/graphql/production",
       "methods": ["GET"]
     },
     {
