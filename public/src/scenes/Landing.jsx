@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Box, useMediaQuery, useTheme, Typography, Paper } from "@mui/material";
 import Narnia from "../assets/littleNarnia.jpg";
 import SocialLinks from "../components/SocialLinks";
@@ -7,6 +8,25 @@ const Landing = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const navbarHeight = 80;
   const nameplateHeight = 276.219;
+
+  const [isMobileNavbarVisible, setMobileNavbarVisible] = useState(true);
+
+  // Function to handle the scroll event and hide/show the navbar
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setMobileNavbarVisible(false);
+    } else {
+      setMobileNavbarVisible(true);
+    }
+  };
+
+  // Attach the scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   if (isNonMobileScreens) {
     // NONMOBILE PARENT BOX
@@ -208,7 +228,7 @@ const Landing = () => {
           backgroundImage: `url(${Narnia})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: `calc(100vh - ${navbarHeight}px)`,
+          height: `calc(100vh - ${isMobileNavbarVisible ? navbarHeight : 0}px)`,
         }}>
         {/* Mobile Box */}
         <Box width="100%" height="100%">
