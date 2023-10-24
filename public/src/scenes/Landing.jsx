@@ -22,7 +22,7 @@ const Landing = () => {
           backgroundImage: `url(${Narnia})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: `calc(100vh - ${navbarHeight}px)`,
+          height: `calc(100vh - ${navbarHeight})`,
           zIndex: -11,
         }}>
         {/* LEFT BOX */}
@@ -99,15 +99,15 @@ const Landing = () => {
               color: theme.palette.primary.light,
               maxHeight: "calc(100vh - 80px - 20rem)",
               overflowY: "scroll",
-              backgroundColor: "rgba(0,0,0,0.1)",
+              backgroundColor: "rgba(0,0,0,0.4)",
               "&::-webkit-scrollbar": {
                 display: "none",
               },
             }}>
-            <Typography fontSize="1.8rem" fontStyle="italic">
+            <Typography fontSize="2rem" fontStyle="italic">
               About
             </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
+            <Typography marginBottom="1rem" fontSize="1.2rem">
               In 2008 I was introduced to the world of web development. Due to
               life circumstances, I set aside my web development studies, worked
               hard, got my degree in Web Development from Liberty University
@@ -115,22 +115,22 @@ const Landing = () => {
               to 2023, I completed a full stack web development bootcamp through
               Rice University.
             </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
+            <Typography marginBottom="1rem" fontSize="1.2rem">
               My main focus now is to find a job as a web developer, preferably
               focusing on front-end. In my free time, I spend time on side
               projects and learning new technologies.
             </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
+            <Typography marginBottom="1rem" fontSize="1.2rem">
               When I'm not at the computer, I am with my family, cooking, or
               working out.
             </Typography>
-            <Typography fontSize="1.8rem" fontStyle="italic">
+            <Typography fontSize="2rem" fontStyle="italic">
               Relevant Project Experience
             </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
+            <Typography marginBottom="1rem" fontSize="1.2rem">
               My experience is largely educational, complimented by educational and personal interests projects. I am well-versed in the MERN Full Stack, encompassing proficiency in technologies such as React, Node, Express, MongoDB, MySQL, and others. Additionally, I have a working knowledge of popular frameworks like MUI, Tailwind, and Bootstrap.
             </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
+            <Typography marginBottom="1rem" fontSize="1.2rem">
               To view all my projects, please visit my projects page.
             </Typography>
           </Paper>
