@@ -71,6 +71,7 @@ const Contact = () => {
             color={theme.palette.primary.main}>
             TO GET STARTED!
           </Typography>
+          <img src={mdek} alt="mdek" width="100%" />
         </Box>
         <ContactForm />
       </Box>
