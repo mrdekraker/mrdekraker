@@ -108,17 +108,20 @@ const Landing = () => {
               About
             </Typography>
             <Typography marginBottom="1rem" fontSize="1.2rem">
-              In 2008 I was introduced to the world of web development. Due to
-              life circumstances, I set aside my web development studies, worked
-              hard, got my degree in Web Development from Liberty University
-              Online, and then became an elementary school teacher. Fast forward
-              to 2023, I completed a full stack web development bootcamp through
-              Rice University.
+              In 2008 I was introduced to the world of web development. I
+              quickly realized that logic and art can seamlessly come together
+              with web design. I developed a strong passion to continue and grow
+              that study. I worked hard, earned my degree in Web Development
+              from Liberty University Online, and then became an elementary
+              school teacher as I continued to further my education in web
+              development. In 2023, I completed a full stack web development
+              boot camp through Rice University.
             </Typography>
             <Typography marginBottom="1rem" fontSize="1.2rem">
-              My main focus now is to find a job as a web developer, preferably
-              focusing on front-end. In my free time, I spend time on side
-              projects and learning new technologies.
+              While I've enjoyed my time as a teacher, my main passion truly
+              lies in web development. I am seeking a career in development,
+              preferably focusing on front-end. In my free time, I work on side
+              projects and continue to learn new technologies.
             </Typography>
             <Typography marginBottom="1rem" fontSize="1.2rem">
               When I'm not at the computer, I am with my family, cooking, or
@@ -128,7 +131,14 @@ const Landing = () => {
               Relevant Project Experience
             </Typography>
             <Typography marginBottom="1rem" fontSize="1.2rem">
-              My experience is largely educational, complimented by educational and personal interests projects. I am well-versed in the MERN Full Stack, encompassing proficiency in technologies such as React, Node, Express, MongoDB, MySQL, and others. Additionally, I have a working knowledge of popular frameworks like MUI, Tailwind, and Bootstrap.
+              My development experience is predominantly educational. My
+              portfolio is a collection that encompasses a wide range of
+              projects, blending my educational background with personal
+              initiatives and academic assignments. I am well-versed in the MERN
+              Full Stack, encompassing proficiency in technologies such as
+              React, Node, Express, MongoDB, MySQL, and others. Additionally, I
+              have a working knowledge of popular frameworks like MUI, Tailwind,
+              and Bootstrap.
             </Typography>
             <Typography marginBottom="1rem" fontSize="1.2rem">
               To view all my projects, please visit my projects page.
