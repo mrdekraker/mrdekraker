@@ -5,6 +5,7 @@ I am a software developer with a passion for learning and creating.
 ## 🔭 I’m currently working on
 
 - [My Portfolio](https://www.mrdekraker.com) - A website to showcase my projects, skills, and blog. Built with [React](https://reactjs.org/), [Sanity.io](https://www.sanity.io/), and [MaterialUI](https://mui.com/).
+- [LessonPlans](https://github.com/mrdekraker/LessonPlans) - As an educator in the public school system, I'm creating a tool to help save teacher's time. Currently in pre-production and planning stages.
 
 ## 🌱 I’m currently learning
 
