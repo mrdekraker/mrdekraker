@@ -1,4 +1,8 @@
+import React, { useState, useEffect } from "react";
 import { Box, useMediaQuery, useTheme, Typography, Paper } from "@mui/material";
+import sanityClient from "../client.js";
+import BlockContent from "@sanity/block-content-to-react";
+
 import Narnia from "../assets/littleNarnia.jpg";
 import SocialLinks from "../components/SocialLinks";
 
@@ -8,7 +12,21 @@ const Landing = () => {
   const navbarHeight = "80px";
   const nameplateHeight = "276.219px";
 
+  const [postCopy, setPostCopy] = useState(null);
 
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "landingCopy"]{
+          title,
+          body,
+        }`
+      )
+      .then((data) => {
+        setPostCopy(data);
+      })
+      .catch(console.error);
+  }, []);
 
   if (isNonMobileScreens) {
     // NONMOBILE PARENT BOX
@@ -104,45 +122,13 @@ const Landing = () => {
                 display: "none",
               },
             }}>
-            <Typography fontSize="2rem" fontStyle="italic">
-              About
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="1.2rem">
-              In 2008 I was introduced to the world of web development. I
-              quickly realized that logic and art can seamlessly come together
-              with web design. I developed a strong passion to continue and grow
-              that study. I worked hard, earned my degree in Web Development
-              from Liberty University Online, and then became an elementary
-              school teacher as I continued to further my education in web
-              development. In 2023, I completed a full stack web development
-              boot camp through Rice University.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="1.2rem">
-              While I've enjoyed my time as a teacher, my main passion truly
-              lies in web development. I am seeking a career in development,
-              preferably focusing on front-end. In my free time, I work on side
-              projects and continue to learn new technologies.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="1.2rem">
-              When I'm not at the computer, I am with my family, cooking, or
-              working out.
-            </Typography>
-            <Typography fontSize="2rem" fontStyle="italic">
-              Relevant Project Experience
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="1.2rem">
-              My development experience is predominantly educational. My
-              portfolio is a collection that encompasses a wide range of
-              projects, blending my educational background with personal
-              initiatives and academic assignments. I am well-versed in the MERN
-              Full Stack, encompassing proficiency in technologies such as
-              React, Node, Express, MongoDB, MySQL, and others. Additionally, I
-              have a working knowledge of popular frameworks like MUI, Tailwind,
-              and Bootstrap.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="1.2rem">
-              To view all my projects, please visit my projects page.
-            </Typography>
+            {postCopy && postCopy[0].body && (
+              <BlockContent
+                blocks={postCopy[0].body}
+                projectId="c8fatw9j"
+                dataset="production"
+              />
+            )}
           </Paper>
         </Box>
       </Box>
@@ -162,10 +148,7 @@ const Landing = () => {
         }}>
         {/* Mobile Box */}
         <Box width="100%" height="100%">
-          <Box
-            padding="1.5rem 0"
-            backgroundColor="rgba(0,0,0,0.4)"
-          >
+          <Box padding="1.5rem 0" backgroundColor="rgba(0,0,0,0.4)">
             <Typography
               fontFamily="League Spartan"
               fontSize="clamp(2rem, 3rem, 4rem)"
@@ -230,40 +213,14 @@ const Landing = () => {
               "&::-webkit-scrollbar": {
                 display: "none",
               },
-            }}
-            >
-            <Typography fontSize="1.8rem" fontStyle="italic">
-              About
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              In 2008 I was introduced to the world of web development. Due to
-              life circumstances, I set aside my web development studies, worked
-              hard, got my degree in Web Development from Liberty University
-              Online, and then became an elementary school teacher. Fast forward
-              to 2023, I completed a full stack web development bootcamp through
-              Rice University.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              My main focus now is to find a job as a web developer, preferably
-              focusing on front-end. In my free time, I spend time on side
-              projects and learning new technologies.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              When I'm not at the computer, I am with my family, cooking, or
-              working out.
-            </Typography>
-            <Typography fontSize="1.8rem" fontStyle="italic">
-              Relevant Project Experience
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              My experience is largely educational and various educational
-              projects. I am trained in the MERN Full Stack. I have experience
-              with React, Node, Express, MongoDB, MySQL, and more. I am also
-              familiar with the MUI, Tailwind, & Bootstrap frameworks.
-            </Typography>
-            <Typography marginBottom="1rem" fontSize="0.9rem">
-              To view all my projects, please visit my projects page.
-            </Typography>
+            }}>
+            {postCopy && postCopy[0].body && (
+              <BlockContent
+                blocks={postCopy[0].body}
+                projectId="c8fatw9j"
+                dataset="production"
+              />
+            )}
           </Paper>
         </Box>
       </Box>
