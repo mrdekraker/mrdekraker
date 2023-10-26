@@ -26,6 +26,7 @@ export default function Blog() {
           },
           alt
         },
+        publishedAt,
         snippet,
       }`
       )
@@ -103,6 +104,12 @@ export default function Blog() {
                       component="div"
                       aria-label={`Blog post ${index + 1} title`}>
                       {post.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      aria-label={`Blog post ${index + 1} snippet`}>
+                      {post.publishedAt}
                     </Typography>
                     <Typography
                       variant="body2"
