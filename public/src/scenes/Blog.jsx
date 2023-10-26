@@ -109,7 +109,12 @@ export default function Blog() {
                       variant="body2"
                       color="text.secondary"
                       aria-label={`Blog post ${index + 1} snippet`}>
-                      {post.publishedAt}
+                      {"Date Published: " +
+                        new Date(post.publishedAt).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
                     </Typography>
                     <Typography
                       variant="body2"
