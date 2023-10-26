@@ -24,7 +24,7 @@ export default function ContactForm() {
       </Typography>
       <form
         target="_blank"
-        action={`https://formsubmit.co/mrdekraker@gmail.com`}
+        action={`https://formsubmit.co/52edcdc9df4224d998079bae78fb4893`}
         method="POST"
         // onSubmit={handleSubmit}
       >
