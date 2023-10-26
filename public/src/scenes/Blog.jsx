@@ -108,7 +108,8 @@ export default function Blog() {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      aria-label={`Blog post ${index + 1} snippet`}>
+                      aria-label={`Blog post ${index + 1} snippet`}
+                      fontStyle="italic">
                       {"Date Published: " +
                         new Date(post.publishedAt).toLocaleDateString("en-US", {
                           year: "numeric",
