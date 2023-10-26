@@ -188,7 +188,7 @@ export default function Blog() {
               <Typography
                 zIndex="2"
                 fontFamily="League Spartan"
-                fontSize="clamp(2rem, 3rem, 4rem)"
+                fontSize="clamp(1.2rem, 2.5rem, 3.2rem)"
                 color={theme.palette.primary.light}
                 textTransform="uppercase">
                 {postData.title}
