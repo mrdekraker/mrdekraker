@@ -63,7 +63,7 @@ const Landing = () => {
               fontFamily="League Spartan"
               fontSize="clamp(5rem, 7rem, 15rem)"
               lineHeight="1"
-              color={theme.palette.primary.main}
+              color={theme.palette.primary.light}
               position="relative"
               textAlign="right">
               DeKraker
@@ -148,7 +148,9 @@ const Landing = () => {
         }}>
         {/* Mobile Box */}
         <Box width="100%" height="100%">
-          <Box padding="1.5rem 0" backgroundColor="rgba(0,0,0,0.4)">
+          <Box
+            padding="0.5rem 0"
+            backgroundColor="rgba(0,0,0,0.4)">
             <Typography
               fontFamily="League Spartan"
               fontSize="clamp(2rem, 3rem, 4rem)"
@@ -163,7 +165,7 @@ const Landing = () => {
               fontSize="clamp(4rem, 5rem, 6rem)"
               style={{ opacity: 1 }}
               lineHeight="1"
-              color={theme.palette.primary.dark}
+              color={theme.palette.primary.light}
               position="relative"
               textAlign="center">
               DeKraker
@@ -172,7 +174,6 @@ const Landing = () => {
               fontStyle="italic"
               fontSize="clamp(0.8rem, 0.9rem, 1.5rem)"
               lineHeight="1.5"
-              // marginBottom="0.5rem"
               color={theme.palette.primary.light}
               position="relative"
               textAlign="center">
