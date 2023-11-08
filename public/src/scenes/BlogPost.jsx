@@ -111,6 +111,8 @@ export default function Blog() {
           margin="0 auto"
           padding="2rem 0">
           <Box
+            color={(theme.palette.mode === "light") ? "black" : "white"}
+            fontSize="clamp(0.8rem, 1rem, 2rem)"
             textAlign="left"
             border={
               theme.palette.mode === "light"
@@ -183,7 +185,7 @@ export default function Blog() {
             }}>
             <Box
               border={`1px solid ${theme.palette.primary.light}`}
-              backgroundColor="rgba(0,0,0,0.5)"
+              backgroundColor="rgba(0,0,0,0.8)"
               zIndex="1">
               <Typography
                 zIndex="2"
@@ -201,9 +203,13 @@ export default function Blog() {
         <Box
           fontFamily="Libre Baskerville"
           fontSize="clamp(1rem, 1.2rem, 2rem)"
-          color={theme.palette.primary.main}
+          // color={theme.palette.primary.main}
           lineHeight="1">
-          <Box textAlign="left">
+          <Box
+            textAlign="left"
+            color={(theme.palette.mode === "light") ? "black" : "white"}
+            fontSize="clamp(0.8rem, 1rem, 2rem)"
+          >
             <BlockContent
               blocks={postData.body}
               projectId="c8fatw9j"
