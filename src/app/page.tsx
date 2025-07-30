@@ -1,13 +1,14 @@
 // src/app/page.tsx
 import { sanityClient } from "@/sanity/lib/client";
 import { blogPostQuery } from "@/sanity/lib/queries";
+import { PortableTextBlock } from "@portabletext/types";
 
 type Post = {
   _id: string;
   title: string;
   slug: { current: string };
   publishedAt: string;
-  body: any;
+  body: PortableTextBlock[];
 };
 
 export default async function HomePage() {
