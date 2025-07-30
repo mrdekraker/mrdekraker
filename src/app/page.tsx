@@ -1,29 +1,28 @@
-// src/app/page.tsx
-import { sanityClient } from "@/sanity/lib/client";
-import { blogPostQuery } from "@/sanity/lib/queries";
-import { PortableTextBlock } from "@portabletext/types";
+// app/page.tsx
+import { sanity } from "@/sanity/lib/client";
 
 type Post = {
   _id: string;
   title: string;
   slug: { current: string };
-  publishedAt: string;
-  body: PortableTextBlock[];
 };
 
 export default async function HomePage() {
-  const posts: Post[] = await sanityClient.fetch(blogPostQuery);
+  const posts: Post[] = await sanity.fetch(
+    `*[_type == "post"]{_id, title, slug}`
+  );
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Blog Posts</h1>
-      <ul className="space-y-4">
+    <main className="p-8">
+      <h1 className="text-3xl font-bold mb-6">Blog Posts</h1>
+      <ul className="space-y-2">
         {posts.map((post) => (
           <li key={post._id}>
-            <h2 className="text-lg font-semibold">{post.title}</h2>
-            <p className="text-sm text-gray-500">
-              Published on {new Date(post.publishedAt).toLocaleDateString()}
-            </p>
+            <a
+              href={`/blog/${post.slug.current}`}
+              className="text-blue-600 hover:underline">
+              {post.title}
+            </a>
           </li>
         ))}
       </ul>
