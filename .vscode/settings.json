@@ -1,0 +1,18 @@
+{
+  "workbench.colorCustomizations": {},
+  "colorize.colorized_variables": ["CSS"],
+  "colorize.languages": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "sass",
+    "scss",
+    "less",
+    "postcss",
+    "sss",
+    "stylus",
+    "xml",
+    "svg"
+  ]
+}
