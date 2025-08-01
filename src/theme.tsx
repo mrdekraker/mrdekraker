@@ -1,5 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, ThemeOptions } from "@mui/material/styles";
 
+export type ThemeMode = "light" | "dark";
 // types/theme.ts
 export type ColorShade = {
   [key: number]: string;
@@ -87,3 +88,29 @@ export const colorTokens: ColorTokens = {
     1000: "#05080A",
   },
 };
+
+export default function getTheme(mode: ThemeMode) {
+  const isDark = mode === "dark";
+
+  const themeOptions: ThemeOptions = {
+    palette: {
+      mode,
+      primary: {
+        main: colorTokens.primary[500],
+      },
+      background: {
+        default: isDark ? colorTokens.grey[900] : colorTokens.grey[50],
+        paper: isDark ? colorTokens.grey[800] : colorTokens.grey[100],
+      },
+      text: {
+        primary: isDark ? colorTokens.grey[100] : colorTokens.grey[900],
+        secondary: isDark ? colorTokens.grey[300] : colorTokens.grey[700],
+      },
+    },
+    typography: {
+      fontFamily: `"Libre Baskerville", "serif"`,
+    },
+  };
+
+  return createTheme(themeOptions);
+}

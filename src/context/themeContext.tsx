@@ -1,13 +1,14 @@
-// context/ThemeProvider.tsx
 "use client";
 
 import {
   createContext,
   useContext,
   useState,
-  ReactNode,
   useEffect,
+  ReactNode,
 } from "react";
+import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
+import getTheme from "@/theme"; // export a function that accepts `mode` from theme.tsx
 
 type Theme = "light" | "dark";
 
@@ -20,9 +21,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
+  if (!context) throw new Error("useTheme must be used within a ThemeProvider");
   return context;
 };
 
@@ -42,9 +41,14 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
   const toggleTheme = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
+  const muiTheme = getTheme(theme);
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <MuiThemeProvider theme={muiTheme}>
+        <CssBaseline />
+        {children}
+      </MuiThemeProvider>
     </ThemeContext.Provider>
   );
 }
