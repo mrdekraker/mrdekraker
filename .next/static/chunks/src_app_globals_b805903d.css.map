@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 2, "column": 0}, "map": {"version":3,"sources":["file:///Users/mrdekraker/WebDev/Projects/mrdekraker/src/app/globals.css"],"sourcesContent":["/* @import \"tailwindcss\";\n\n@import url(\"https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Libre+Baskerville:ital@0;1&display=swap\");\n\n:root {\n  --background: #ffffff;\n  --foreground: #171717;\n}\n\n@theme {\n  --color-background: var(--background);\n  --color-foreground: var(--foreground);\n  --font-sans: \"Libre Baskerville\", serif;\n  --font-mono: \"League Spartan\", sans-serif;\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    --background: #0a0a0a;\n    --foreground: #ededed;\n  }\n}\n\nhtml,\nbody,\n#root {\n  height: 100%;\n  width: 100%;\n  background: var(--background);\n  color: var(--foreground);\n  font-family: \"Libre Baskerville\", \"League Spartan\", serif, sans-serif;\n} */\n\n@import url(\"https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Libre+Baskerville:ital@0;1&display=swap\");\n\nhtml,\nbody,\n#root {\n  height: 100%;\n  width: 100%;\n  font-family: \"Libre Baskerville\", \"League Spartan\", serif, sans-serif;\n}\n"],"names":[],"mappings":"AAmCA","debugId":null}}]
-}
