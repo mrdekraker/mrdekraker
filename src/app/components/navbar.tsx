@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Box } from "@mui/material";
 
 export default function Navbar() {
   return (
