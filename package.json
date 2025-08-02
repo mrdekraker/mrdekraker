@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/material": "^7.2.0",
+    "@mui/system": "^7.2.0",
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^4.2.0",
