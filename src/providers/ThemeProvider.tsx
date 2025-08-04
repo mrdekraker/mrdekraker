@@ -36,7 +36,7 @@ export default function ThemeProvider({
   children: React.ReactNode;
 }) {
   const [mode, setMode] = useState<ThemeMode>("light"); // default for SSR
-  const [accent, setAccent] = useState<AccentColor>("accentY");
+  const [accent, setAccent] = useState<AccentColor>("accentR");
   const [userOverridden, setUserOverridden] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 

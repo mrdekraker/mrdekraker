@@ -1,22 +1,22 @@
 import { createTheme, ThemeOptions } from "@mui/material/styles";
 
 export type ThemeMode = "light" | "dark";
-export type AccentColor = "accentY" | "accentG" | "accentB";
+export type AccentColor = "accentY" | "accentG" | "accentB" | "accentR";
 
 export type ColorShade = {
   [key: number]: string;
 };
 
 export type ColorTokens = {
-  grey: ColorShade;
   primary: ColorShade;
   accentY: ColorShade;
   accentG: ColorShade;
   accentB: ColorShade;
+  accentR: ColorShade;
 };
 
 export const colorTokens: ColorTokens = {
-  grey: {
+  primary: {
     50: "#F0F1F2",
     100: "#DADCE0",
     200: "#B6B9C1",
@@ -29,7 +29,7 @@ export const colorTokens: ColorTokens = {
     900: "#101011",
     1000: "#050506",
   },
-  primary: {
+  accentR: {
     50: "#FFE5E5",
     100: "#FFCCCC",
     200: "#FF9999",
@@ -85,7 +85,7 @@ export const colorTokens: ColorTokens = {
 
 export default function getTheme(
   mode: ThemeMode,
-  accent: AccentColor = "accentY"
+  accent: AccentColor = "accentR"
 ) {
   const isDark = mode === "dark";
 
@@ -100,19 +100,12 @@ export default function getTheme(
       secondary: {
         main: colorTokens[accent][500],
       },
-      neutral: {
-        dark: isDark ? colorTokens.grey[100] : colorTokens.grey[700],
-        main: isDark ? colorTokens.grey[200] : colorTokens.grey[500],
-        mediumMain: isDark ? colorTokens.grey[300] : colorTokens.grey[400],
-        medium: isDark ? colorTokens.grey[400] : colorTokens.grey[300],
-        light: isDark ? colorTokens.grey[700] : colorTokens.grey[50],
-      },
       background: {
-        default: isDark ? colorTokens.grey[900] : colorTokens.grey[50],
+        default: isDark ? colorTokens.primary[900] : colorTokens.primary[50],
       },
       text: {
-        primary: isDark ? colorTokens.grey[100] : colorTokens.grey[900],
-        secondary: isDark ? colorTokens.grey[300] : colorTokens.grey[700],
+        primary: isDark ? colorTokens.primary[100] : colorTokens.primary[900],
+        secondary: isDark ? colorTokens.primary[300] : colorTokens.primary[700],
       },
     },
     typography: {
