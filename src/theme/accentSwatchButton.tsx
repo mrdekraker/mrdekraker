@@ -2,7 +2,6 @@
 
 import { IconButton, Tooltip } from "@mui/material";
 import { useThemeContext } from "@/providers/ThemeProvider";
-import clsx from "clsx";
 import { colorTokens } from "@/theme/theme"; // Import your color tokens
 
 type Props = {

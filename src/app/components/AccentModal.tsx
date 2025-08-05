@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  IconButton,
   Box,
   Tooltip,
 } from "@mui/material";
@@ -19,10 +18,10 @@ type AccentOption = {
 };
 
 const accentOptions = [
-  { name: "accentR", icon: <FitnessCenter />, label: "Red" },
-  { name: "accentY", icon: <Flare />, label: "Yellow" },
-  { name: "accentG", icon: <Gavel />, label: "Green" },
-  { name: "accentB", icon: <AutoAwesome />, label: "Blue" },
+  { name: "accentR", icon: <FitnessCenter />, label: "Crimson" },
+  { name: "accentY", icon: <Flare />, label: "Golden Ochre" },
+  { name: "accentG", icon: <Gavel />, label: "Forest" },
+  { name: "accentB", icon: <AutoAwesome />, label: "Slate Gray" },
 ] as const;
 
 export default function AccentModal({
@@ -41,9 +40,15 @@ export default function AccentModal({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Select Accent Color</DialogTitle>
+      <DialogTitle
+        textAlign="center"
+        fontSize={32}
+        fontWeight="bold"
+        marginTop={2}>
+        Select Accent Color
+      </DialogTitle>
       <DialogContent>
-        <Box display="flex" gap={2} justifyContent="center" py={2}>
+        <Box display="flex" gap={4} justifyContent="center" px={12} py={4}>
           {accentOptions.map(({ name, icon, label }) => (
             <AccentSwatchButton
               key={name}
