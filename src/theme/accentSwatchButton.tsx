@@ -1,8 +1,6 @@
-// theme/accentSwatchButton.tsx
-
 import { IconButton, Tooltip } from "@mui/material";
 import { useThemeContext } from "@/providers/ThemeProvider";
-import { colorTokens } from "@/theme/theme"; // Import your color tokens
+import { colorTokens } from "@/theme/theme";
 
 type Props = {
   accentKey: "accentG" | "accentY" | "accentB" | "accentR";
@@ -19,7 +17,6 @@ export default function AccentSwatchButton({
 }: Props) {
   const { accent } = useThemeContext();
 
-  // Pick default (shade 500) and hover color (shade 700 or 800)
   const defaultColor = colorTokens[accentKey][500];
   const hoverColor = colorTokens[accentKey][700];
 

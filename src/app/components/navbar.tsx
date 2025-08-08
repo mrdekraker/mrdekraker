@@ -25,7 +25,9 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between p-4 shadow-md bg-white dark:bg-zinc-900">
+      <div
+        className="flex items-center justify-between p-4
+      ">
         <div className="flex items-center gap-4 text-2xl font-bold">
           <Link href="/">MD</Link>
           <Link

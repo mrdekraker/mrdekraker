@@ -20,7 +20,7 @@ type AccentOption = {
 const accentOptions = [
   { name: "accentR", icon: <FitnessCenter />, label: "Crimson" },
   { name: "accentY", icon: <Flare />, label: "Golden Ochre" },
-  { name: "accentG", icon: <Gavel />, label: "Forest" },
+  { name: "accentG", icon: <Gavel />, label: "Forest Green" },
   { name: "accentB", icon: <AutoAwesome />, label: "Slate Gray" },
 ] as const;
 
