@@ -1,24 +1,26 @@
-# Hi there 👋 My name is Mark DeKraker
+# Hearthside Catholic
 
-I am a software developer with a passion for learning and creating.
+*Pull up a chair. The fire's on.*
 
-## 🔭 I’m currently working on
+I'm Mark — a husband, dad, musician, and Catholic convert still figuring out how to live this ancient faith in an ordinary life. This is where I write about it.
 
-- [My Portfolio](https://www.mrdekraker.com) - A website to showcase my projects, skills, and blog. Built with [React](https://reactjs.org/), [Sanity.io](https://www.sanity.io/), and [MaterialUI](https://mui.com/).
-- [LessonPlans](https://github.com/mrdekraker/LessonPlans) - As an educator in the public school system, I'm creating a tool to help save teacher's time. Currently in pre-production and planning stages.
+**[mrdekraker.com](https://www.mrdekraker.com)** is my main hearth. Posts go up whenever something is worth saying — theology, books I'm working through, family life, the occasional detour into whatever's caught my attention.
 
-## 🌱 I’m currently learning
+---
 
-- [Next.js](https://nextjs.org/)
+### What you'll find over there
 
-## 🖐️ Collaboration
+- **Faith & Reason** — Catholic theology made accessible. Mostly for people like me: curious, not quite academic, trying to think carefully.
+- **Books** — Reading notes and reactions. Classics, theology, fiction, whatever's on the nightstand.
+- **Family Formation** — Raising kids inside the faith. What works, what doesn't, what I'm still figuring out.
+- **The Convert's Corner** — Honest writing about the journey from Protestant to Catholic. The costs, the gifts, the questions that linger.
 
-I am always looking for new projects to work on. If you have a project that you think I would be interested in, please reach out to me.
+---
 
-## 📫 How to reach me
+### A bit more about me
 
-You can reach me at [mrdekraker@gmail.com](mailto:mrdekraker@gmail.com) or on [LinkedIn](https://www.linkedin.com/in/mdek/).
+Teacher by training. Developer by practice. I play music, cheer for the Toronto Maple Leafs 🍁 (yes, still), and spend an unreasonable amount of time thinking about the Eucharist and what to read next.
 
-## 😃 Fun Fact
+---
 
-I am a teacher 👨‍🏫, I play music 🎵, and I am a huge fan of the [Toronto Maple Leafs 🏒](https://www.nhl.com/mapleleafs). It's always fun being a fan of a team that hasn't won a championship in a long time.
+*Built with [Next.js](https://nextjs.org/) + [Sanity.io](https://www.sanity.io/). Come say hello at [mrdekraker.com](https://www.mrdekraker.com).*
