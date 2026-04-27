@@ -1,82 +1,50 @@
-"use client";
+'use client'
 
-import { createContext, useContext, useMemo, useState, useEffect } from "react";
-import { ThemeProvider as MUIThemeProvider, CssBaseline } from "@mui/material";
-import getTheme, { ThemeMode, AccentColor } from "../theme/theme";
+import { createContext, useContext, useState, useEffect } from 'react'
+
+type Mode = 'light' | 'dark'
 
 type ThemeContextType = {
-  mode: ThemeMode;
-  toggleMode: () => void;
-  accent: AccentColor;
-  setAccent: (accent: AccentColor) => void;
-};
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export function useThemeContext() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useThemeContext must be used within ThemeProvider");
-  }
-  return context;
+  mode: Mode
+  toggleMode: () => void
 }
 
-const getSystemTheme = (): ThemeMode => {
-  if (typeof window !== "undefined" && window.matchMedia) {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  }
-  return "light";
-};
+const ThemeContext = createContext<ThemeContextType>({
+  mode: 'light',
+  toggleMode: () => {},
+})
 
-export default function ThemeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [mode, setMode] = useState<ThemeMode>("light"); // default for SSR
-  const [accent, setAccent] = useState<AccentColor>("accentR");
-  const [userOverridden, setUserOverridden] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+export function useThemeContext() {
+  return useContext(ThemeContext)
+}
 
-  // On mount, sync with system and listen for changes
+export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [mode, setMode] = useState<Mode>('light')
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
-    const systemMode = getSystemTheme();
-    setMode(systemMode);
-    setIsMounted(true);
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      if (!userOverridden) {
-        setMode(mediaQuery.matches ? "dark" : "light");
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [userOverridden]);
+    const stored = localStorage.getItem('theme') as Mode | null
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    const initial = stored ?? system
+    setMode(initial)
+    document.documentElement.classList.toggle('dark', initial === 'dark')
+    setMounted(true)
+  }, [])
 
   const toggleMode = () => {
-    setUserOverridden(true);
-    setMode((prev) => (prev === "light" ? "dark" : "light"));
-  };
+    setMode((prev) => {
+      const next = prev === 'light' ? 'dark' : 'light'
+      document.documentElement.classList.toggle('dark', next === 'dark')
+      localStorage.setItem('theme', next)
+      return next
+    })
+  }
 
-  const theme = useMemo(() => getTheme(mode, accent), [mode, accent]);
-
-  const contextValue = useMemo(
-    () => ({ mode, toggleMode, accent, setAccent }),
-    [mode, accent]
-  );
-
-  if (!isMounted) return null;
+  if (!mounted) return null
 
   return (
-    <ThemeContext.Provider value={contextValue}>
-      <MUIThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MUIThemeProvider>
+    <ThemeContext.Provider value={{ mode, toggleMode }}>
+      {children}
     </ThemeContext.Provider>
-  );
+  )
 }

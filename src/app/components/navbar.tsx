@@ -1,74 +1,52 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Link from "next/link";
-import { IconButton } from "@mui/material";
-import {
-  DarkMode,
-  LightMode,
-  Home,
-  LaptopChromebook,
-  PermMedia,
-  AccountBox,
-  Palette,
-} from "@mui/icons-material";
-import { useTheme } from "@mui/material/styles";
-import { useThemeContext } from "@/providers/ThemeProvider";
-import AccentModal from "@/app/components/AccentModal";
+import Link from 'next/link'
+import { useThemeContext } from '@/providers/ThemeProvider'
 
 export default function Navbar() {
-  const { mode, toggleMode } = useThemeContext();
-  const [open, setOpen] = useState(false);
-
-  const theme = useTheme();
-  const accentColor = theme.palette.secondary.main;
+  const { mode, toggleMode } = useThemeContext()
 
   return (
-    <>
-      <div
-        className="flex items-center justify-between p-4
-      ">
-        <div className="flex items-center gap-4 text-2xl font-bold">
-          <Link href="/">MD</Link>
-          <Link
-            href="/"
-            style={{ color: accentColor }}
-            className="flex items-center">
-            <Home />
-          </Link>
-          <Link
-            href="/blog"
-            style={{ color: accentColor }}
-            className="flex items-center">
-            <LaptopChromebook />
-          </Link>
-          <Link
-            href="/portfolio"
-            style={{ color: accentColor }}
-            className="flex items-center">
-            <PermMedia />
-          </Link>
-          <Link
-            href="/contact"
-            style={{ color: accentColor }}
-            className="flex items-center">
-            <AccountBox />
-          </Link>
-        </div>
+    <header className="px-12 py-6 flex justify-between items-center max-sm:px-5 max-sm:py-4">
+      <Link href="/" className="no-underline">
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.05rem', letterSpacing: '0.05em', color: 'var(--ink)' }}>
+          Welcome{' '}
+        </span>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.05rem', letterSpacing: '0.05em', color: 'var(--navy)' }}>
+          Home
+        </span>
+      </Link>
 
-        <div className="flex items-center gap-2">
-          <IconButton onClick={toggleMode} color="inherit">
-            {mode === "light" ? <DarkMode /> : <LightMode />}
-          </IconButton>
+      <nav className="flex items-center gap-8 max-sm:gap-5">
+        <ul className="flex gap-8 list-none max-sm:gap-5">
+          {[
+            { href: '/blog', label: 'Essays' },
+            { href: '/blog?cat=family-formation', label: 'For Parents' },
+            { href: '/about', label: 'My Story' },
+          ].map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="no-underline transition-colors duration-200"
+                style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-muted)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--navy)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--ink-muted)')}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-          {/* 🎨 Accent Modal Trigger */}
-          <IconButton onClick={() => setOpen(true)} color="inherit">
-            <Palette />
-          </IconButton>
-        </div>
-      </div>
-
-      <AccentModal open={open} onClose={() => setOpen(false)} />
-    </>
-  );
+        <button
+          onClick={toggleMode}
+          aria-label="Toggle dark mode"
+          className="transition-opacity hover:opacity-70"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-muted)', fontSize: '1rem', padding: '0.2rem' }}
+        >
+          {mode === 'light' ? '☽' : '☀︎'}
+        </button>
+      </nav>
+    </header>
+  )
 }
