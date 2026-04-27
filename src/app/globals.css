@@ -3,6 +3,8 @@
 /* ── Light mode tokens ── */
 :root {
   --bg: #f5efe4;
+  --warm: #fdfaf5;
+  --cream: #f9f5ee;
   --ink: #1c1812;
   --ink-soft: #3a342a;
   --ink-muted: #7a6f60;
@@ -17,6 +19,8 @@
 /* ── Dark mode tokens ── */
 .dark {
   --bg: #1a1510;
+  --warm: #1e1a14;
+  --cream: #e8dfd0;
   --ink: #e8dfd0;
   --ink-soft: #c8bfb0;
   --ink-muted: #8a7f70;
@@ -30,6 +34,8 @@
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-warm: var(--warm);
+  --color-cream: var(--cream);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-muted: var(--ink-muted);
