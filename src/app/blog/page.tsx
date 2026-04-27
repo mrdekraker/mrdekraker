@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { client } from '@/../../sanity/lib/client'
-import { allPostsQuery } from '@/../../sanity/queries'
-import type { PostPreview } from '@/../../sanity/types'
+import { client } from '@cms/lib/client'
+import { allPostsQuery } from '@cms/queries'
+import type { PostPreview } from '@cms/types'
 import PostListItem from '@/app/components/PostListItem'
 
 export const metadata: Metadata = {

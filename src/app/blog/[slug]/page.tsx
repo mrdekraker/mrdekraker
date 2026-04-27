@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { PortableText } from 'next-sanity'
-import { client } from '@/../../sanity/lib/client'
-import { postBySlugQuery, allSlugQuery } from '@/../../sanity/queries'
-import type { Post } from '@/../../sanity/types'
+import { client } from '@cms/lib/client'
+import { postBySlugQuery, allSlugQuery } from '@cms/queries'
+import type { Post } from '@cms/types'
 
 interface Props {
   params: Promise<{ slug: string }>

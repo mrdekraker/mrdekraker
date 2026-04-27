@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { client } from '@/../../sanity/lib/client'
-import { recentPostsQuery } from '@/../../sanity/queries'
-import type { PostPreview } from '@/../../sanity/types'
+import { client } from '@cms/lib/client'
+import { recentPostsQuery } from '@cms/queries'
+import type { PostPreview } from '@cms/types'
 import PostListItem from '@/app/components/PostListItem'
 
 const PLACEHOLDER_POSTS: PostPreview[] = [

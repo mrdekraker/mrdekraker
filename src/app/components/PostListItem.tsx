@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { PostPreview } from '@/../../sanity/types'
+import type { PostPreview } from '@cms/types'
 
 export default function PostListItem({ post, index }: { post: PostPreview; index: number }) {
   const num = String(index + 1).padStart(2, '0')
