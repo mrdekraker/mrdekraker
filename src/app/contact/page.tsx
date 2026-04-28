@@ -24,7 +24,7 @@ export default function ContactPage() {
     <main>
       {/* Hero */}
       <div
-        className="mx-auto px-8 max-sm:px-5"
+        className="mx-auto px-8 max-sm:px-4"
         style={{ maxWidth: '900px', paddingTop: '4.5rem', paddingBottom: '1.5rem' }}>
         <p
           style={{
@@ -81,12 +81,11 @@ export default function ContactPage() {
 
       {/* Two-column body */}
       <div
-        className="mx-auto px-8 max-sm:px-5"
+        className="mx-auto px-8 max-sm:px-4"
         style={{ maxWidth: '900px', paddingBottom: '5rem' }}>
         <div
-          className="max-sm:flex max-sm:flex-col"
+          className="grid max-sm:grid-cols-1"
           style={{
-            display: 'grid',
             gridTemplateColumns: '1fr 1.4fr',
             gap: '3.5rem',
             alignItems: 'start',
