@@ -87,7 +87,7 @@ export default async function HomePage() {
           />
         </div>
         <p className="italic text-[0.85rem] text-ink-faint text-center mb-10">
-          Somewhere worth slowing down for.
+          Somewhere worth slowing down for. Bora Bora 2017.
         </p>
 
         <div className="flex gap-5 justify-center flex-wrap">
