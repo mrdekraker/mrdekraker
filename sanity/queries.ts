@@ -1,24 +1,30 @@
 import { groq } from 'next-sanity'
 
+// Published filter — backward-compatible: shows posts with status "published"
+// OR posts that pre-date the status field (no status set)
+const published = `(status == "published" || !defined(status))`
+
 export const recentPostsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc) [0..3] {
+  *[_type == "post" && ${published}] | order(publishedAt desc) [0..3] {
     _id,
     title,
     slug,
     publishedAt,
     excerpt,
-    "category": categories[0]->title
+    featured,
+    "category": primaryCategory->title
   }
 `
 
 export const allPostsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc) {
+  *[_type == "post" && ${published}] | order(publishedAt desc) {
     _id,
     title,
     slug,
     publishedAt,
     excerpt,
-    "category": categories[0]->title
+    featured,
+    "category": primaryCategory->title
   }
 `
 
@@ -29,12 +35,46 @@ export const postBySlugQuery = groq`
     slug,
     publishedAt,
     excerpt,
-    "category": categories[0]->title,
+    metaDescription,
+    status,
+    featured,
+    "category": primaryCategory->{title, slug},
+    "tags": tags[]->{
+      _id,
+      title,
+      slug,
+      "relatedCategories": relatedCategory->title
+    },
     mainImage,
-    body
+    body,
+    "author": author->{name, image}
   }
 `
 
 export const allSlugQuery = groq`
-  *[_type == "post"] { "slug": slug.current }
+  *[_type == "post" && ${published}] { "slug": slug.current }
+`
+
+export const postsByTagQuery = groq`
+  *[_type == "post" && ${published} && $tagSlug in tags[]->slug.current]
+  | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    "category": primaryCategory->title
+  }
+`
+
+export const postsByCategoryQuery = groq`
+  *[_type == "post" && ${published} && primaryCategory->slug.current == $categorySlug]
+  | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    "category": primaryCategory->title
+  }
 `
