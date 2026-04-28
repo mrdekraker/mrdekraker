@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "My Story",
   description:
-    "Born in the Philippines, raised in Canada, now living in Texas and home in the Catholic Church. The long way home is not a metaphor.",
+    "Born in the Philippines, raised in Texas by Canadians, now living in Texas and home in the Catholic Church. The long way home is not a metaphor.",
 };
 
 function SectionHead({ label }: { label: string }) {
@@ -73,7 +73,7 @@ export default function AboutPage() {
             color: "var(--crimson)",
             marginBottom: "1.2rem",
           }}>
-          About this place
+          About me.
         </p>
 
         <h1
@@ -169,11 +169,12 @@ export default function AboutPage() {
             color: "var(--ink-soft)",
             marginBottom: "1.3rem",
           }}>
-          I came to Christianity young — around fifteen or sixteen — through the
-          Protestant tradition, which shaped how I read Scripture, how I pray,
-          and how I think about what faith is actually for. That foundation
-          matters to me. I didn&apos;t leave it behind when I became Catholic; I
-          brought it with me.
+          I came to Christianity young. I grew up going to church every sunday
+          in a Protestant denomination that followed the Reformed tradition.
+          Around fifteen or sixteen, through the Protestant tradition, which
+          shaped how I read Scripture, how I pray, and how I think about what
+          faith is actually for. That foundation matters to me. I didn&apos;t
+          leave it behind when I became Catholic; I brought it with me.
         </p>
 
         <p
@@ -185,9 +186,9 @@ export default function AboutPage() {
           }}>
           The conversion wasn&apos;t a crisis or a dramatic rupture. It was more
           like a long walk that gradually revealed where it had been heading all
-          along. The more I read —{" "}
+          along. The more I read and listened to{" "}
           <strong style={{ fontWeight: 500, color: "var(--ink)" }}>
-            Newman, Chesterton, Aquinas, Augustine
+            Aquinas, Augustine, Matt Fradd, Dr. Scott Hahn,
           </strong>{" "}
           — the more I found a tradition that didn&apos;t just ask me to believe
           things, but gave me reasons. A faith that welcomed the questions
