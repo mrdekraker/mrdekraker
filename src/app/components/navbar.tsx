@@ -16,7 +16,13 @@ export default function Navbar() {
 
   return (
     <header
-      style={{ borderBottom: "1px solid var(--rule)", position: "relative" }}>
+      style={{
+          borderBottom: "1px solid var(--rule)",
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
+          background: "var(--bg)",
+        }}>
       {/* ── Main bar ── */}
       <div
         className="flex justify-between items-center"

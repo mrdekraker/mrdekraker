@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -60,6 +61,22 @@ export default function ContactPage() {
           Whether you have a question, want to push back on something I wrote,
           or simply want to say hello — I read every message.
         </p>
+
+        {/* Photo */}
+        <div style={{ marginTop: '2rem', maxWidth: '420px' }}>
+          <Image
+            src="/images/mDek.webp"
+            alt="Mark DeKraker"
+            width={840}
+            height={1050}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+            }}
+            priority
+          />
+        </div>
       </div>
 
       {/* Two-column body */}
