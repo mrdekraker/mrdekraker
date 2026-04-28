@@ -2,6 +2,7 @@ import Link from "next/link";
 import { client } from "@cms/lib/client";
 import { recentPostsQuery } from "@cms/queries";
 import type { PostPreview } from "@cms/types";
+import Image from "next/image";
 import Ornament from "@/app/components/Ornament";
 import PostListItem from "@/app/components/PostListItem";
 
@@ -76,12 +77,14 @@ export default async function HomePage() {
         </p>
 
         {/* Photo inset */}
-        <div className="w-full max-w-[580px] mx-auto mb-4 border border-rule overflow-hidden aspect-[16/7] bg-gradient-to-br from-[#2c3828] via-[#435240] to-[#9faa78] flex items-end p-4">
-          <span
-            className="text-[0.6rem] tracking-[0.14em] uppercase text-white/30"
-            style={{ fontFamily: "var(--font-ui)" }}>
-            Your landscape photograph — framed, not full-bleed
-          </span>
+        <div className="w-full max-w-[580px] mx-auto mb-4 overflow-hidden aspect-[16/7] relative">
+          <Image
+            src="/images/bora.webp"
+            alt="A landscape photograph"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
         <p className="italic text-[0.85rem] text-ink-faint text-center mb-10">
           Somewhere worth slowing down for.
