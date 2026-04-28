@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "My Story",
   description:
-    "Born in the Philippines, raised in Texas by Canadians, now living in Texas and home in the Catholic Church. The long way home is not a metaphor.",
+    "Born in the Philippines, raised in Texas by Canadians, now rooted in Texas and home in the Catholic Church. The long way home is not a metaphor.",
 };
 
 function SectionHead({ label }: { label: string }) {
@@ -102,9 +102,9 @@ export default function AboutPage() {
             borderLeft: "2px solid var(--gold)",
           }}>
           Born in the Philippines, raised in Texas by Canadians — a
-          Chinese-German mother and a Dutch father — now living in Texas with my
-          wife and kids, and as of not long ago, home in the Catholic Church.
-          The long way home is not a metaphor. It&apos;s just my life.
+          Chinese-German mother and a Dutch father — now rooted in Texas with my
+          wife and kids, and as of Easter 2026, home in the Catholic Church. The
+          long way home is not a metaphor. It&apos;s just my life.
         </p>
       </div>
 
@@ -127,7 +127,7 @@ export default function AboutPage() {
           {[
             { label: "Background", value: "Filipino-Canadian" },
             { label: "Now living", value: "Texas, USA" },
-            { label: "In the faith", value: "Recent convert" },
+            { label: "In the faith", value: "Easter 2026" },
           ].map(({ label, value }) => (
             <div
               key={label}
@@ -174,7 +174,8 @@ export default function AboutPage() {
           Around fifteen or sixteen, through the Protestant tradition, which
           shaped how I read Scripture, how I pray, and how I think about what
           faith is actually for. That foundation matters to me. I didn&apos;t
-          leave it behind when I became Catholic; I brought it with me.
+          leave it behind when I became Catholic; I brought it with me, and it
+          informed so much more.
         </p>
 
         <p
@@ -213,8 +214,9 @@ export default function AboutPage() {
               color: "var(--ink)",
               margin: 0,
             }}>
-            &ldquo;The Church is not a museum of saints, but a hospital for
-            sinners — and I arrived needing exactly that.&rdquo;
+            &ldquo;The saints in heaven, the souls in purgatory, and the
+            faithful on earth are united in the one mystical body of Christ, and
+            through this union, each member can aid another. &rdquo;
           </p>
           <cite
             style={{
@@ -227,7 +229,7 @@ export default function AboutPage() {
               color: "var(--ink-muted)",
               fontStyle: "normal",
             }}>
-            — Mark DeKraker
+            — St. Thomas Aquinas
           </cite>
         </blockquote>
 
