@@ -37,7 +37,6 @@ export default function Navbar() {
         <ul className="flex gap-8 list-none max-sm:gap-5">
           {[
             { href: "/blog", label: "Blog" },
-            { href: "/blog?cat=family-formation", label: "For Parents" },
             { href: "/about", label: "My Story" },
             { href: "/contact", label: "Contact" },
           ].map(({ href, label }) => (
