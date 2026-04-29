@@ -92,7 +92,7 @@ export default async function HomePage() {
 
         <div className="flex gap-5 justify-center flex-wrap">
           <Link
-            href="/writing"
+            href="/blog"
             className="bg-navy text-cream font-[var(--font-ui)] text-[0.75rem] tracking-[0.12em] uppercase px-8 py-3 no-underline transition-colors duration-200 hover:bg-ink"
             style={{ fontFamily: "var(--font-ui)" }}>
             Start reading
