@@ -43,7 +43,10 @@ export const postBySlugQuery = groq`
       _id,
       title,
       slug,
-      "relatedCategories": relatedCategory->title
+      "relatedCategory": {
+        "title": relatedCategory->title,
+        "slug": relatedCategory->slug.current
+      }
     },
     mainImage,
     body,
@@ -76,5 +79,26 @@ export const postsByCategoryQuery = groq`
     publishedAt,
     snippet,
     "category": primaryCategory->title
+  }
+`
+
+export const tagBySlugQuery = groq`
+  *[_type == "tag" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    "relatedCategory": {
+      "title": relatedCategory->title,
+      "slug": relatedCategory->slug.current
+    }
+  }
+`
+
+export const categoryBySlugQuery = groq`
+  *[_type == "category" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    description
   }
 `

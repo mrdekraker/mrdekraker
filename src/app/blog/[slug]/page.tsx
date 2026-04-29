@@ -28,12 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!post) return {};
     return {
       title: post.title,
-      description: post.metaDescription || post.excerpt,
+      description: post.metaDescription || post.snippet,
       openGraph: {
         type: "article",
         url: `https://mrdekraker.com/blog/${slug}`,
         title: post.title,
-        description: post.metaDescription || post.excerpt,
+        description: post.metaDescription || post.snippet,
         images: [],
         publishedTime: post.publishedAt,
       },
@@ -63,10 +63,15 @@ export default async function PostPage({ params }: Props) {
       })
     : null;
 
-  // Extract unique relatedCategories from tags
+  // Deduplicate related categories from all tags (by slug)
   const relatedCategories = post.tags
     ? Array.from(
-        new Set(post.tags.map((tag) => tag.relatedCategories).filter(Boolean)),
+        new Map(
+          post.tags
+            .map((tag) => tag.relatedCategory)
+            .filter((rc): rc is { title: string; slug: string } => !!rc?.slug)
+            .map((rc) => [rc.slug, rc]),
+        ).values(),
       )
     : [];
 
@@ -104,7 +109,7 @@ export default async function PostPage({ params }: Props) {
           }}>
           {post.title}
         </h1>
-        {post.excerpt && (
+        {post.snippet && (
           <p
             className="italic leading-[1.75] pl-5"
             style={{
@@ -112,7 +117,7 @@ export default async function PostPage({ params }: Props) {
               color: "var(--ink-soft)",
               borderLeft: "2px solid var(--rule)",
             }}>
-            {post.excerpt}
+            {post.snippet}
           </p>
         )}
         {date && (
@@ -153,9 +158,11 @@ export default async function PostPage({ params }: Props) {
             Related Topics
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-            {relatedCategories.map((category) => (
-              <span
-                key={category}
+            {relatedCategories.map((rc) => (
+              <Link
+                key={rc.slug}
+                href={`/blog/category/${rc.slug}`}
+                className="transition-colors duration-200 hover:text-ink hover:border-ink-muted"
                 style={{
                   fontFamily: "var(--font-ui)",
                   fontSize: "0.72rem",
@@ -164,9 +171,10 @@ export default async function PostPage({ params }: Props) {
                   color: "var(--navy)",
                   border: "1px solid var(--rule)",
                   padding: "0.25rem 0.75rem",
+                  textDecoration: "none",
                 }}>
-                {category}
-              </span>
+                {rc.title}
+              </Link>
             ))}
           </div>
         </div>

@@ -13,7 +13,10 @@ export interface Tag {
   slug: {
     current: string;
   };
-  relatedCategories?: string;
+  relatedCategory?: {
+    title: string;
+    slug: string; // slug.current — projected as a plain string
+  };
 }
 
 export interface Category {
