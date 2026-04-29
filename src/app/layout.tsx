@@ -29,6 +29,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mrdekraker.com"),
   title: {
     default: "Welcome Home",
     template: "%s · Welcome Home",
