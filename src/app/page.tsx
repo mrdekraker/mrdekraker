@@ -13,7 +13,7 @@ const PLACEHOLDER_POSTS: PostPreview[] = [
     slug: { current: "argument-from-conscience" },
     category: "Faith & Reason",
     publishedAt: "",
-    excerpt:
+    snippet:
       "Newman's approach to moral intuition cuts through a lot of the noise in natural law debates — and it starts somewhere every parent already knows.",
   },
   {
@@ -22,7 +22,7 @@ const PLACEHOLDER_POSTS: PostPreview[] = [
     slug: { current: "explaining-eucharist" },
     category: "Family Formation",
     publishedAt: "",
-    excerpt:
+    snippet:
       "Children are far more comfortable with mystery than adults give them credit for. Mine taught me that.",
   },
   {
@@ -31,7 +31,7 @@ const PLACEHOLDER_POSTS: PostPreview[] = [
     slug: { current: "what-i-miss" },
     category: "The Convert's Journey",
     publishedAt: "",
-    excerpt:
+    snippet:
       "Honest reflection on what the journey cost, what I carried with me, and why I think it was worth it anyway.",
   },
 ];

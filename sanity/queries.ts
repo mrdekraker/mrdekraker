@@ -10,7 +10,7 @@ export const recentPostsQuery = groq`
     title,
     slug,
     publishedAt,
-    excerpt,
+    snippet,
     featured,
     "category": primaryCategory->title
   }
@@ -22,7 +22,7 @@ export const allPostsQuery = groq`
     title,
     slug,
     publishedAt,
-    excerpt,
+    snippet,
     featured,
     "category": primaryCategory->title
   }
@@ -34,7 +34,7 @@ export const postBySlugQuery = groq`
     title,
     slug,
     publishedAt,
-    excerpt,
+    snippet,
     metaDescription,
     status,
     featured,
@@ -62,7 +62,7 @@ export const postsByTagQuery = groq`
     title,
     slug,
     publishedAt,
-    excerpt,
+    snippet,
     "category": primaryCategory->title
   }
 `
@@ -74,7 +74,7 @@ export const postsByCategoryQuery = groq`
     title,
     slug,
     publishedAt,
-    excerpt,
+    snippet,
     "category": primaryCategory->title
   }
 `

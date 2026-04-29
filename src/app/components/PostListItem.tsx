@@ -30,9 +30,9 @@ export default function PostListItem({ post, index }: { post: PostPreview; index
         >
           {post.title}
         </h3>
-        {post.excerpt && (
+        {post.snippet && (
           <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', lineHeight: 1.6, marginTop: '0.3rem' }}>
-            {post.excerpt}
+            {post.snippet}
           </p>
         )}
       </div>

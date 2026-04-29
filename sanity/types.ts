@@ -31,7 +31,7 @@ export interface PostPreview {
     current: string;
   };
   publishedAt: string;
-  excerpt?: string;
+  snippet?: string;
   /** Projected as a plain string (primaryCategory->title) for list display */
   category?: string;
   featured?: boolean;
@@ -45,7 +45,7 @@ export interface Post {
     current: string;
   };
   publishedAt: string;
-  excerpt?: string;
+  snippet?: string;
   metaDescription?: string;
   /** Projected as {title, slug} object from postBySlugQuery */
   category?: Category;
