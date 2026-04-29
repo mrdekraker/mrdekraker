@@ -1,5 +1,5 @@
 import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schema} from './sanity/schemaTypes'
 import {structure} from './sanity/structure'
@@ -12,6 +12,6 @@ export default defineConfig({
   title: 'Mark DeKraker',
   projectId,
   dataset,
-  plugins: [deskTool({structure}), visionTool()],
+  plugins: [structureTool({structure}), visionTool()],
   schema,
 })
