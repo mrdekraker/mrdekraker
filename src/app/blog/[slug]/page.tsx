@@ -1,10 +1,34 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { client } from "@cms/lib/client";
 import { postBySlugQuery, allSlugQuery } from "@cms/queries";
 import type { Post } from "@cms/types";
+import { urlFor } from "@cms/lib/image";
+
+const portableTextComponents = {
+  types: {
+    image: ({ value }: { value: { asset: object; alt?: string } }) => (
+      <div className="my-8">
+        <Image
+          src={urlFor(value.asset).width(800).fit("max").auto("format").url()}
+          alt={value.alt ?? ""}
+          width={800}
+          height={0}
+          style={{ height: "auto", width: "100%" }}
+          className="rounded-sm"
+        />
+        {value.alt && (
+          <p className="text-center text-sm italic mt-2" style={{ color: "var(--ink-faint)" }}>
+            {value.alt}
+          </p>
+        )}
+      </div>
+    ),
+  },
+};
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -137,7 +161,7 @@ export default async function PostPage({ params }: Props) {
 
       {post.body && (
         <div className="prose-body">
-          <PortableText value={post.body} />
+          <PortableText value={post.body} components={portableTextComponents} />
         </div>
       )}
 
