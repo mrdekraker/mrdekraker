@@ -43,7 +43,7 @@ export const postType = defineType({
     }),
     defineField({
       name: 'excerpt',
-      title: 'Excerpt',
+      title: 'Snippet',
       description: 'Short summary shown in post lists',
       type: 'text',
       rows: 3,
