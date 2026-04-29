@@ -4,8 +4,10 @@ import { allPostsQuery } from '@cms/queries'
 import type { PostPreview } from '@cms/types'
 import PostListItem from '@/app/components/PostListItem'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
-  title: 'Essays',
+  title: 'Blog',
   description: 'All writing — faith, family, books, and the convert\'s journey.',
 }
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+
+export const revalidate = 60;
 import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { client } from "@cms/lib/client";
