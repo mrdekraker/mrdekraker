@@ -4,14 +4,13 @@ import {visionTool} from '@sanity/vision'
 import {schema} from './sanity/schemaTypes'
 import {structure} from './sanity/structure'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
-
+// These are hardcoded here because sanity.config.ts runs in Vite's browser
+// context where process.env is not available. The project ID is not a secret.
 export default defineConfig({
   name: 'default',
   title: 'Mark DeKraker',
-  projectId,
-  dataset,
+  projectId: 'c8fatw9j',
+  dataset: 'production',
   plugins: [structureTool({structure}), visionTool()],
   schema,
 })
