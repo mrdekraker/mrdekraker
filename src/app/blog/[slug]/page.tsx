@@ -123,6 +123,9 @@ export default async function PostPage({ params }: Props) {
               marginBottom: "1rem",
             }}>
             {post.category.title}
+            {post.issueNumber != null && (
+              <> &mdash; Issue No.&nbsp;{post.issueNumber}</>
+            )}
           </p>
         )}
         <h1

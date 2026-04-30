@@ -90,6 +90,12 @@ export const postType = defineType({
       of: [defineArrayMember({type: 'reference', to: [{type: 'tag'}]})],
     }),
     defineField({
+      name: 'issueNumber',
+      title: 'Issue Number',
+      description: 'Optional — marks this post as part of a numbered series (e.g. Issue No. 1)',
+      type: 'number',
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published At',
       type: 'datetime',

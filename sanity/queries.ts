@@ -38,6 +38,7 @@ export const postBySlugQuery = groq`
     metaDescription,
     status,
     featured,
+    issueNumber,
     "category": primaryCategory->{title, slug},
     "tags": tags[]->{
       _id,

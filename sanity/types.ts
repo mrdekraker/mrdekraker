@@ -58,4 +58,5 @@ export interface Post {
   author?: Author;
   status?: "draft" | "published" | "archived";
   featured?: boolean;
+  issueNumber?: number;
 }
