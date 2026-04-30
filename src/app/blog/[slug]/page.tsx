@@ -29,6 +29,12 @@ const portableTextComponents = {
         )}
       </div>
     ),
+    divider: () => <div className="prose-divider">· · ·</div>,
+  },
+  block: {
+    pullquote: ({ children }: { children?: React.ReactNode }) => (
+      <blockquote className="prose-pull-quote">{children}</blockquote>
+    ),
   },
 };
 

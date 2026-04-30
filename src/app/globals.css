@@ -168,3 +168,38 @@ body {
   margin-top: 0.5rem;
   font-style: italic;
 }
+
+/* Drop cap on first paragraph */
+.prose-body p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.6rem;
+  font-weight: 600;
+  float: left;
+  line-height: 0.82;
+  margin-right: 0.1em;
+  margin-top: 0.08em;
+  color: var(--crimson);
+}
+
+/* Pull quote */
+.prose-pull-quote {
+  border-left: 3px solid var(--crimson);
+  padding: 0.4rem 0 0.4rem 1.8rem;
+  margin: 2.8rem 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.28rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* Section break */
+.prose-divider {
+  text-align: center;
+  color: var(--crimson);
+  margin: 2.8rem 0;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  opacity: 0.45;
+  user-select: none;
+}
