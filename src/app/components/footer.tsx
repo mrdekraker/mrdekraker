@@ -10,7 +10,7 @@ export default function Footer() {
         textTransform: "uppercase",
         color: "var(--ink-faint)",
       }}>
-      Mark DeKraker &nbsp;·&nbsp; Welcome Home &nbsp;·&nbsp; The Long Way Home
+      Mark DeKraker &nbsp;·&nbsp; Welcome Home &nbsp;·&nbsp; Luke 15:20, 24
     </footer>
   );
 }

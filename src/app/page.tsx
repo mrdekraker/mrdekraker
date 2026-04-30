@@ -72,8 +72,9 @@ export default async function HomePage() {
         <p className="text-[1.12rem] leading-[1.85] text-ink-soft max-w-[52ch] mx-auto mb-9">
           I&apos;m a husband, father, musician, athlete and Catholic convert —
           confirmed Easter 2026, Filipino-born, Canadian by citizenship, and
-          rooted in Texas. Working through the intellectual and spiritual
-          tradition of the Church one question at a time. Pull up a chair.
+          rooted in Texas. Working through questions out loud. Theology, faith,
+          music, and the ordinary chaos of being a husband, father, musician,
+          athlete, and teacher. Pull up a chair.
         </p>
 
         {/* Photo inset */}
