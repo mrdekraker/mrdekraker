@@ -6,6 +6,8 @@ import Image from "next/image";
 import Ornament from "@/app/components/Ornament";
 import PostListItem from "@/app/components/PostListItem";
 
+export const revalidate = 60;
+
 const PLACEHOLDER_POSTS: PostPreview[] = [
   {
     _id: "1",
