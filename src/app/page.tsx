@@ -36,13 +36,14 @@ const PLACEHOLDER_POSTS: PostPreview[] = [
   },
 ];
 
+const sanityConfigured = !!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+
 async function getPosts(): Promise<PostPreview[]> {
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return PLACEHOLDER_POSTS;
+  if (!sanityConfigured) return PLACEHOLDER_POSTS
   try {
-    const posts = await client!.fetch<PostPreview[]>(recentPostsQuery);
-    return posts?.length ? posts : PLACEHOLDER_POSTS;
+    return (await client!.fetch<PostPreview[]>(recentPostsQuery)) ?? []
   } catch {
-    return PLACEHOLDER_POSTS;
+    return []
   }
 }
 
@@ -126,11 +127,19 @@ export default async function HomePage() {
           <div style={{ flex: 1, height: "1px", background: "var(--rule)" }} />
         </div>
 
-        <div className="flex flex-col gap-7">
-          {posts.map((post, i) => (
-            <PostListItem key={post._id} post={post} index={i} />
-          ))}
-        </div>
+        {posts.length === 0 ? (
+          <p style={{ fontStyle: 'italic', color: 'var(--ink-muted)', textAlign: 'center', padding: '3rem 0' }}>
+            {sanityConfigured
+              ? 'No published posts yet — set a post\'s status to "Published" in Sanity Studio.'
+              : 'Posts will appear here once Sanity is connected.'}
+          </p>
+        ) : (
+          <div className="flex flex-col gap-7">
+            {posts.map((post, i) => (
+              <PostListItem key={post._id} post={post} index={i} />
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
