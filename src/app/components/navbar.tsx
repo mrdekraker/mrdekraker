@@ -10,6 +10,25 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
+function DarkModeToggle({ mode, toggleMode }: { mode: string; toggleMode: () => void }) {
+  return (
+    <button
+      onClick={toggleMode}
+      aria-label="Toggle dark mode"
+      className="transition-opacity hover:opacity-70"
+      style={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        color: "var(--ink-muted)",
+        fontSize: "1rem",
+        padding: "0.2rem",
+      }}>
+      {mode === "light" ? "☽" : "☀︎"}
+    </button>
+  );
+}
+
 export default function Navbar() {
   const { mode, toggleMode } = useThemeContext();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,18 +36,16 @@ export default function Navbar() {
   return (
     <header
       style={{
-          borderBottom: "1px solid var(--rule)",
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-          background: "var(--bg)",
-        }}>
+        borderBottom: "1px solid var(--rule)",
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: "var(--bg)",
+      }}>
       {/* ── Main bar ── */}
       <div
         className="flex justify-between items-center"
-        style={{ padding: "1.5rem 3.5rem" }}
-        // Reduce padding on small screens via inline media — Tailwind handles it:
-      >
+        style={{ padding: "1.5rem 3.5rem" }}>
         {/* Wordmark */}
         <Link href="/" className="flex flex-col gap-0.5 no-underline">
           <span className="flex flex-row gap-1">
@@ -72,60 +89,24 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className="no-underline transition-colors duration-200"
+                  className="no-underline transition-colors duration-200 nav-link"
                   style={{
                     fontFamily: "var(--font-ui)",
                     fontSize: "0.72rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "var(--ink-muted)",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--navy)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--ink-muted)")
-                  }>
+                  }}>
                   {label}
                 </Link>
               </li>
             ))}
           </ul>
-
-          {/* Dark mode toggle */}
-          <button
-            onClick={toggleMode}
-            aria-label="Toggle dark mode"
-            className="transition-opacity hover:opacity-70"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              color: "var(--ink-muted)",
-              fontSize: "1rem",
-              padding: "0.2rem",
-            }}>
-            {mode === "light" ? "☽" : "☀︎"}
-          </button>
+          <DarkModeToggle mode={mode} toggleMode={toggleMode} />
         </nav>
 
         {/* ── Mobile right-side controls (visible only on mobile) ── */}
         <div className="flex sm:hidden items-center gap-3">
-          {/* Dark mode toggle */}
-          <button
-            onClick={toggleMode}
-            aria-label="Toggle dark mode"
-            className="transition-opacity hover:opacity-70"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              color: "var(--ink-muted)",
-              fontSize: "1rem",
-              padding: "0.2rem",
-            }}>
-            {mode === "light" ? "☽" : "☀︎"}
-          </button>
+          <DarkModeToggle mode={mode} toggleMode={toggleMode} />
 
           {/* Hamburger button */}
           <button
@@ -198,21 +179,14 @@ export default function Navbar() {
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className="no-underline block transition-colors duration-200"
+                  className="no-underline block transition-colors duration-200 nav-link-mobile"
                   style={{
                     fontFamily: "var(--font-ui)",
                     fontSize: "0.72rem",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "var(--ink-muted)",
                     padding: "0.85rem 1.75rem",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--ink)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--ink-muted)")
-                  }>
+                  }}>
                   {label}
                 </Link>
               </li>
