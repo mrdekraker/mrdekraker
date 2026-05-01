@@ -6,6 +6,8 @@ import Image from "next/image";
 import Ornament from "@/app/components/Ornament";
 import PostListItem from "@/app/components/PostListItem";
 
+export const revalidate = 60;
+
 const PLACEHOLDER_POSTS: PostPreview[] = [
   {
     _id: "1",
@@ -36,14 +38,14 @@ const PLACEHOLDER_POSTS: PostPreview[] = [
   },
 ];
 
-const sanityConfigured = !!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const sanityConfigured = !!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 
 async function getPosts(): Promise<PostPreview[]> {
-  if (!sanityConfigured) return PLACEHOLDER_POSTS
+  if (!sanityConfigured) return PLACEHOLDER_POSTS;
   try {
-    return (await client!.fetch<PostPreview[]>(recentPostsQuery)) ?? []
+    return (await client!.fetch<PostPreview[]>(recentPostsQuery)) ?? [];
   } catch {
-    return []
+    return [];
   }
 }
 
@@ -59,23 +61,24 @@ export default async function HomePage() {
         <p
           className="text-[0.68rem] tracking-[0.18em] uppercase text-ink-muted mb-5"
           style={{ fontFamily: "var(--font-ui)" }}>
-          Catholic theology · family formation · the convert&apos;s journey
+          Faith · Life in the Tradition · the examined life
         </p>
 
         <h1
-          className="text-[clamp(2.6rem,5vw,4rem)] font-light leading-[1.12] text-ink mb-6"
+          className="text-[clamp(2.6rem,5vw,4rem)] font-light leading-[1.2] text-ink mb-6"
           style={{ fontFamily: "var(--font-display)" }}>
-          A pilgrim still learning
+          Walking toward Emmaus,
           <br />
-          to read <em className="italic text-crimson">the ancient map.</em>
+          <em className="italic text-crimson">
+            still learning to recognize who walks beside me.
+          </em>
         </h1>
 
         <p className="text-[1.12rem] leading-[1.85] text-ink-soft max-w-[52ch] mx-auto mb-9">
           I&apos;m a husband, father, musician, athlete and Catholic convert —
-          confirmed Easter 2026, Filipino-born, Canadian by citizenship, and
-          rooted in Texas. Working through questions out loud. Theology, faith,
-          music, and the ordinary chaos of being a husband, father, musician,
-          athlete, and teacher. Pull up a chair.
+          confirmed Easter 2026 — Filipino-born, Canadian by citizenship, and
+          rooted in Texas. Working through questions out loud: theology, faith,
+          and the ordinary chaos of it all. Pull up a chair.
         </p>
 
         {/* Photo inset */}
@@ -128,10 +131,16 @@ export default async function HomePage() {
         </div>
 
         {posts.length === 0 ? (
-          <p style={{ fontStyle: 'italic', color: 'var(--ink-muted)', textAlign: 'center', padding: '3rem 0' }}>
+          <p
+            style={{
+              fontStyle: "italic",
+              color: "var(--ink-muted)",
+              textAlign: "center",
+              padding: "3rem 0",
+            }}>
             {sanityConfigured
               ? 'No published posts yet — set a post\'s status to "Published" in Sanity Studio.'
-              : 'Posts will appear here once Sanity is connected.'}
+              : "Posts will appear here once Sanity is connected."}
           </p>
         ) : (
           <div className="flex flex-col gap-7">
