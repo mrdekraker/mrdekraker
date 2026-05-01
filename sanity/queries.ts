@@ -1,8 +1,8 @@
 import { groq } from 'next-sanity'
 
-// Published filter — backward-compatible: shows posts with status "published"
-// OR posts that pre-date the status field (no status set)
-const published = `(status == "published" || !defined(status))`
+// Published filter — only posts explicitly marked "published" appear on the site.
+// Any post without a status set (or set to draft/archived) will be hidden.
+const published = `status == "published"`
 
 export const recentPostsQuery = groq`
   *[_type == "post" && ${published}] | order(publishedAt desc) [0..3] {
