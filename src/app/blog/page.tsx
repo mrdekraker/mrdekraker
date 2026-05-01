@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { client } from "@cms/lib/client";
 import { allPostsQuery } from "@cms/queries";
+import { isSanityConfigured } from "@cms/env";
 import type { PostPreview } from "@cms/types";
 import PostListItem from "@/app/components/PostListItem";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 async function getPosts(): Promise<PostPreview[]> {
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return [];
+  if (!isSanityConfigured) return [];
   try {
     return (await client!.fetch<PostPreview[]>(allPostsQuery)) ?? [];
   } catch {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { client } from "@cms/lib/client";
 import { recentPostsQuery } from "@cms/queries";
+import { isSanityConfigured } from "@cms/env";
 import type { PostPreview } from "@cms/types";
 import Image from "next/image";
 import Ornament from "@/app/components/Ornament";
@@ -8,40 +9,8 @@ import PostListItem from "@/app/components/PostListItem";
 
 export const revalidate = 60;
 
-const PLACEHOLDER_POSTS: PostPreview[] = [
-  {
-    _id: "1",
-    title: "Why I find the argument from conscience compelling",
-    slug: { current: "argument-from-conscience" },
-    category: "Faith & Reason",
-    publishedAt: "",
-    snippet:
-      "Newman's approach to moral intuition cuts through a lot of the noise in natural law debates — and it starts somewhere every parent already knows.",
-  },
-  {
-    _id: "2",
-    title: "Explaining the Eucharist to a six-year-old",
-    slug: { current: "explaining-eucharist" },
-    category: "Family Formation",
-    publishedAt: "",
-    snippet:
-      "Children are far more comfortable with mystery than adults give them credit for. Mine taught me that.",
-  },
-  {
-    _id: "3",
-    title: "What I miss about Protestant worship",
-    slug: { current: "what-i-miss" },
-    category: "The Convert's Journey",
-    publishedAt: "",
-    snippet:
-      "Honest reflection on what the journey cost, what I carried with me, and why I think it was worth it anyway.",
-  },
-];
-
-const sanityConfigured = !!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-
 async function getPosts(): Promise<PostPreview[]> {
-  if (!sanityConfigured) return PLACEHOLDER_POSTS
+  if (!isSanityConfigured) return []
   try {
     return (await client!.fetch<PostPreview[]>(recentPostsQuery)) ?? []
   } catch {
@@ -131,7 +100,7 @@ export default async function HomePage() {
 
         {posts.length === 0 ? (
           <p style={{ fontStyle: 'italic', color: 'var(--ink-muted)', textAlign: 'center', padding: '3rem 0' }}>
-            {sanityConfigured
+            {isSanityConfigured
               ? 'No published posts yet — set a post\'s status to "Published" in Sanity Studio.'
               : 'Posts will appear here once Sanity is connected.'}
           </p>
