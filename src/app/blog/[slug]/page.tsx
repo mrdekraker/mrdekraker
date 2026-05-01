@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-
-export const revalidate = 60;
 import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { client } from "@cms/lib/client";
 import { postBySlugQuery, allSlugQuery } from "@cms/queries";
+import { isSanityConfigured } from "@cms/env";
 import type { Post } from "@cms/types";
 import { urlFor } from "@cms/lib/image";
+
+export const revalidate = 60;
 
 const portableTextComponents = {
   types: {
@@ -43,7 +44,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return [];
+  if (!isSanityConfigured) return [];
   try {
     const slugs = await client!.fetch<{ slug: string }[]>(allSlugQuery);
     return (slugs ?? []).map(({ slug }) => ({ slug }));
@@ -54,7 +55,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return {};
+  if (!isSanityConfigured) return {};
   try {
     const post = await client!.fetch<Post>(postBySlugQuery, { slug });
     if (!post) return {};
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) notFound();
+  if (!isSanityConfigured) notFound();
 
   let post: Post | null = null;
   try {

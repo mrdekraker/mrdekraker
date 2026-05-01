@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { client } from '@cms/lib/client'
 import { tagBySlugQuery, postsByTagQuery } from '@cms/queries'
+import { isSanityConfigured } from '@cms/env'
 import type { PostPreview } from '@cms/types'
 import PostListItem from '@/app/components/PostListItem'
 
@@ -12,7 +13,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return {}
+  if (!isSanityConfigured) return {}
   try {
     const tag = await client!.fetch<{ title: string }>(tagBySlugQuery, { slug })
     if (!tag) return {}
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TagArchivePage({ params }: Props) {
   const { slug } = await params
-  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) notFound()
+  if (!isSanityConfigured) notFound()
 
   let tag: { title: string; relatedCategory?: { title: string; slug: string } } | null = null
   let posts: PostPreview[] = []
