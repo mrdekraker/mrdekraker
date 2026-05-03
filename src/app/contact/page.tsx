@@ -130,7 +130,7 @@ export default function ContactPage() {
                 },
                 {
                   label: "Catholic intellectual life",
-                  note: "Newman, Aquinas, the whole tradition",
+                  note: "Matt Fradd, Aquinas, the whole tradition",
                 },
               ].map(({ label, note }) => (
                 <li key={label}>
