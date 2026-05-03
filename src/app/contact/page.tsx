@@ -122,7 +122,7 @@ export default function ContactPage() {
                 },
                 {
                   label: "Family & parenting",
-                  note: "Passing faith to young children",
+                  note: "Passing on the faith",
                 },
                 {
                   label: "Books & reading",
