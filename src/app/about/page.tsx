@@ -243,10 +243,12 @@ export default function AboutPage() {
             marginBottom: "1.3rem",
           }}>
           I&apos;m a father of young children, and that changes what theology is{" "}
-          <em>for</em>. It&apos;s no longer an abstract exercise — it&apos;s
-          something I have to be able to hand to a six-year-old in language
-          that&apos;s honest and doesn&apos;t condescend. That challenge has
-          made me a better thinker, not worse.
+          <em>for</em>. It&apos;s no longer an abstract exercise but it&apos;s
+          become something I have to be able to hand to a six-year-old in
+          language that&apos;s honest and doesn&apos;t condescend. Explaining
+          the gospel in a way that a child can understand is far more important
+          than theological reasoning. That challenge has made me a better
+          thinker, not worse.
         </p>
 
         <p
@@ -257,10 +259,11 @@ export default function AboutPage() {
             marginBottom: "1.3rem",
           }}>
           This site is where I work through it in public. Not because I have all
-          the answers — I very much don&apos;t — but because I think the
-          working-through is worth sharing. If you&apos;re a parent trying to
-          figure out how to pass the faith on, or a Protestant curious about
-          where the Catholic road goes, or someone who just wants to think
+          the answers, <em>I&apos;d be a fool to suggest I do</em> because I
+          very much don&apos;t, but because I think the working-through is worth
+          sharing. If you&apos;re a parent, trying to figure out how to pass the
+          faith on, or a Protestant curious about where the Catholic road goes,
+          someone who is also on a long walk, or someone who just wants to think
           seriously about hard questions: you&apos;re welcome here.
         </p>
 
@@ -335,11 +338,11 @@ export default function AboutPage() {
             color: "var(--ink-soft)",
             marginBottom: "1.3rem",
           }}>
-          I&apos;m a musician — which means &ldquo;notes&rdquo; in the tagline
-          is doing more than one thing, and I&apos;m fine with that. I grew up
-          reading the classics: Homer, Tolkien, the great books that treat human
-          beings as if their lives actually mean something. Those instincts
-          shape how I read theology too.
+          I&apos;m a worshipper, husband, father, teacher, musician, and
+          athlete. I grew to love reading the classics: Homer, Tolkien, the
+          great books that treat human beings as if their lives actually mean
+          something, to glean wisdom from the voices in a long conversation I
+          wanted to join. That&apos;s how I read theology too.
         </p>
 
         {/* Interest tags */}
