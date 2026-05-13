@@ -103,3 +103,17 @@ export const categoryBySlugQuery = groq`
     description
   }
 `
+
+export const allPostsForSearchQuery = groq`
+  *[_type == "post" && ${published}] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    snippet,
+    featured,
+    "category": primaryCategory->title,
+    "tags": tags[]->title,
+    "bodyText": pt::text(body)
+  }
+`
