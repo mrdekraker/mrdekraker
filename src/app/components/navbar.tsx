@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useThemeContext } from "@/providers/ThemeProvider";
 
 const NAV_LINKS = [
@@ -9,6 +10,55 @@ const NAV_LINKS = [
   { href: "/about", label: "My Story" },
   { href: "/contact", label: "Contact" },
 ];
+
+function NavSearch() {
+  const [val, setVal] = useState("");
+  const router = useRouter();
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const term = val.trim();
+    if (!term) return;
+    router.push(`/blog?q=${encodeURIComponent(term)}`);
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      role="search"
+      aria-label="Site search"
+      className="flex items-center">
+      <input
+        type="search"
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder="Search…"
+        aria-label="Search posts"
+        style={{
+          background: "transparent",
+          border: "none",
+          borderBottom: "1px solid var(--rule)",
+          outline: "none",
+          fontFamily: "var(--font-ui)",
+          fontSize: "0.68rem",
+          letterSpacing: "0.06em",
+          color: "var(--ink)",
+          padding: "0.15rem 0.3rem 0.15rem 0",
+          width: "130px",
+          transition: "border-color 0.2s",
+        }}
+        onFocus={(e) => {
+          (e.target as HTMLInputElement).style.borderBottomColor =
+            "var(--ink-muted)";
+        }}
+        onBlur={(e) => {
+          (e.target as HTMLInputElement).style.borderBottomColor =
+            "var(--rule)";
+        }}
+      />
+    </form>
+  );
+}
 
 function DarkModeToggle({ mode, toggleMode }: { mode: string; toggleMode: () => void }) {
   return (
@@ -101,6 +151,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <NavSearch />
           <DarkModeToggle mode={mode} toggleMode={toggleMode} />
         </nav>
 

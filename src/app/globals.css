@@ -18,8 +18,8 @@
 
 /* ── Dark mode tokens ── */
 .dark {
-  --bg: #1a1510;
-  --warm: #1e1a14;
+  --bg: #111111;
+  --warm: #161616;
   --cream: #e8dfd0;
   --ink: #e8dfd0;
   --ink-soft: #c8bfb0;
@@ -28,8 +28,8 @@
   --gold: #d4aa5a;
   --navy: #7aaad4;
   --crimson: #c4485c;
-  --rule: #2e2820;
-  --card: #221e18;
+  --rule: #252525;
+  --card: #1a1a1a;
 }
 
 @theme inline {
