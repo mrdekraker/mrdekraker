@@ -5,7 +5,7 @@ import { groq } from 'next-sanity'
 const published = `status == "published"`
 
 export const recentPostsQuery = groq`
-  *[_type == "post" && ${published}] | order(_createdAt desc) [0..3] {
+  *[_type == "post" && ${published}] | order(_updatedAt desc) [0..3] {
     _id,
     title,
     slug,
@@ -17,7 +17,7 @@ export const recentPostsQuery = groq`
 `
 
 export const allPostsQuery = groq`
-  *[_type == "post" && ${published}] | order(_createdAt desc) {
+  *[_type == "post" && ${published}] | order(_updatedAt desc) {
     _id,
     title,
     slug,
@@ -61,7 +61,7 @@ export const allSlugQuery = groq`
 
 export const postsByTagQuery = groq`
   *[_type == "post" && ${published} && $tagSlug in tags[]->slug.current]
-  | order(_createdAt desc) {
+  | order(_updatedAt desc) {
     _id,
     title,
     slug,
@@ -73,7 +73,7 @@ export const postsByTagQuery = groq`
 
 export const postsByCategoryQuery = groq`
   *[_type == "post" && ${published} && primaryCategory->slug.current == $categorySlug]
-  | order(_createdAt desc) {
+  | order(_updatedAt desc) {
     _id,
     title,
     slug,
@@ -105,7 +105,7 @@ export const categoryBySlugQuery = groq`
 `
 
 export const allPostsForSearchQuery = groq`
-  *[_type == "post" && ${published}] | order(_createdAt desc) {
+  *[_type == "post" && ${published}] | order(_updatedAt desc) {
     _id,
     title,
     slug,
