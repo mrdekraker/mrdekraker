@@ -27,8 +27,14 @@ function filterPosts(posts: PostSearchable[], query: string): PostSearchable[] {
   })
 }
 
-export default function SearchableBlogList({ posts }: { posts: PostSearchable[] }) {
-  const [query, setQuery] = useState('')
+export default function SearchableBlogList({
+  posts,
+  initialQuery = '',
+}: {
+  posts: PostSearchable[];
+  initialQuery?: string;
+}) {
+  const [query, setQuery] = useState(initialQuery)
 
   const filtered = useMemo(() => filterPosts(posts, query), [posts, query])
   const isSearching = query.trim().length > 0

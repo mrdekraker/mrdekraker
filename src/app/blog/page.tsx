@@ -21,8 +21,14 @@ async function getPosts(): Promise<PostSearchable[]> {
   }
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
   const posts = await getPosts();
+  const { q } = await searchParams;
+  const initialQuery = q ?? "";
 
   return (
     <main
@@ -75,7 +81,7 @@ export default async function BlogPage() {
           Posts will appear here once Sanity is connected.
         </p>
       ) : (
-        <SearchableBlogList posts={posts} />
+        <SearchableBlogList posts={posts} initialQuery={initialQuery} />
       )}
     </main>
   );
