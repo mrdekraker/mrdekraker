@@ -40,6 +40,12 @@ export interface PostPreview {
   featured?: boolean;
 }
 
+/** Extended PostPreview with tag titles and extracted body text for client-side search */
+export interface PostSearchable extends PostPreview {
+  tags?: string[];
+  bodyText?: string;
+}
+
 /** Full shape used on the individual post page */
 export interface Post {
   _id: string;
