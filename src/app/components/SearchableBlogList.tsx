@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useEffect } from 'react'
 import type { PostSearchable } from '@cms/types'
 import PostListItem from './PostListItem'
 
@@ -36,6 +36,10 @@ export default function SearchableBlogList({
 }) {
   const [query, setQuery] = useState(initialQuery)
 
+  useEffect(() => {
+    setQuery(initialQuery)
+  }, [initialQuery])
+
   const filtered = useMemo(() => filterPosts(posts, query), [posts, query])
   const isSearching = query.trim().length > 0
 
@@ -62,7 +66,7 @@ export default function SearchableBlogList({
         <div style={{ position: 'relative' }}>
           <input
             id="post-search"
-            type="search"
+            type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search by keyword, topic, or tag…"
