@@ -4,8 +4,20 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import type { PostSearchable } from '@cms/types'
 import PostListItem from './PostListItem'
 
+function escapeRegex(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+// Match term at a word boundary on either side: catches "JavaScript" and
+// "TypeScript" (term at end) and "scripting" (term at start), but rejects
+// "description" where "script" is buried mid-word.
+function wordBoundaryMatch(term: string, text: string): boolean {
+  const e = escapeRegex(term)
+  return new RegExp(`(\\b${e}|${e}\\b)`, 'i').test(text)
+}
+
 function filterPosts(posts: PostSearchable[], query: string): PostSearchable[] {
-  const q = query.trim().toLowerCase()
+  const q = query.trim()
   if (!q) return posts
 
   const words = q.split(/\s+/).filter(w => w.length > 1)
@@ -20,10 +32,8 @@ function filterPosts(posts: PostSearchable[], query: string): PostSearchable[] {
     ]
       .filter(Boolean)
       .join(' ')
-      .toLowerCase()
 
-    // Match full phrase, or every individual word
-    return text.includes(q) || (words.length > 1 && words.every(w => text.includes(w)))
+    return wordBoundaryMatch(q, text) || (words.length > 1 && words.every(w => wordBoundaryMatch(w, text)))
   })
 }
 
