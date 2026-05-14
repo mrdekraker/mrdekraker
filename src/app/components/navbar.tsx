@@ -26,36 +26,59 @@ function NavSearch() {
     <form
       onSubmit={handleSubmit}
       role="search"
-      aria-label="Site search"
-      className="flex items-center">
-      <input
-        type="text"
-        value={val}
-        onChange={(e) => setVal(e.target.value)}
-        placeholder="Search…"
-        aria-label="Search posts"
-        style={{
-          background: "transparent",
-          border: "none",
-          borderBottom: "1px solid var(--rule)",
-          outline: "none",
-          fontFamily: "var(--font-ui)",
-          fontSize: "0.68rem",
-          letterSpacing: "0.06em",
-          color: "var(--ink)",
-          padding: "0.15rem 0.3rem 0.15rem 0",
-          width: "130px",
-          transition: "border-color 0.2s",
-        }}
-        onFocus={(e) => {
-          (e.target as HTMLInputElement).style.borderBottomColor =
-            "var(--ink-muted)";
-        }}
-        onBlur={(e) => {
-          (e.target as HTMLInputElement).style.borderBottomColor =
-            "var(--rule)";
-        }}
-      />
+      aria-label="Site search">
+      <div style={{ position: "relative" }}>
+        <input
+          type="text"
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+          placeholder="Search…"
+          aria-label="Search posts"
+          autoComplete="off"
+          style={{
+            background: "transparent",
+            border: "none",
+            borderBottom: "1px solid var(--rule)",
+            outline: "none",
+            fontFamily: "var(--font-ui)",
+            fontSize: "0.68rem",
+            letterSpacing: "0.06em",
+            color: "var(--ink)",
+            padding: "0.15rem 1.2rem 0.15rem 0",
+            width: "130px",
+            transition: "border-color 0.2s",
+          }}
+          onFocus={(e) => {
+            (e.target as HTMLInputElement).style.borderBottomColor =
+              "var(--ink-muted)";
+          }}
+          onBlur={(e) => {
+            (e.target as HTMLInputElement).style.borderBottomColor =
+              "var(--rule)";
+          }}
+        />
+        {val && (
+          <button
+            type="button"
+            onClick={() => setVal("")}
+            aria-label="Clear search"
+            style={{
+              position: "absolute",
+              right: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--ink-muted)",
+              fontSize: "1.1rem",
+              padding: "0 0.2rem",
+              lineHeight: 1,
+            }}>
+            ×
+          </button>
+        )}
+      </div>
     </form>
   );
 }
