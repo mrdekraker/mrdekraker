@@ -29,7 +29,7 @@ function NavSearch() {
       aria-label="Site search"
       className="flex items-center">
       <input
-        type="search"
+        type="text"
         value={val}
         onChange={(e) => setVal(e.target.value)}
         placeholder="Search…"
